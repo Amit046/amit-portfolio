@@ -78,7 +78,7 @@ npm -v
 
 ### 2️⃣ Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/amit-portfolio.git
+git clone https://github.com/Amit046/amit-portfolio.git
 cd amit-portfolio
 ```
 
