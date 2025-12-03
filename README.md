@@ -1,13 +1,59 @@
-# 🚀 Amit's Portfolio Website
+# 🚀 Amit's Modern React Portfolio
 
-A modern, responsive, dark-themed developer portfolio built using **React.js**, showcasing my projects, skills, certifications, and contact details — with smooth animations and an interactive user experience.
-
-🔗 **Live Demo:** [https://amit-portfolio11.onrender.com](https://amit-portfolio11.onrender.com)  
-👨‍💼 **LinkedIn:** [www.linkedin.com/in/-amit](https://www.linkedin.com/in/-amit)
+A professional, fully redesigned, **neon + glassmorphism React.js portfolio**, featuring animated components, light/dark mode, custom cursor, certifications, projects, and a premium UI/UX suitable for developers and hiring managers.
 
 ---
 
-## 🧱 Folder Structure
+## 🌐 Live Portfolio  
+🔗 **https://amit-portfolio11.onrender.com**
+
+---
+
+## 👨‍💻 Author  
+**Amit**  
+Full Stack Developer | Data Science Enthusiast | AI Explorer  
+- 🔗 GitHub: https://github.com/Amit046  
+- 🔗 LinkedIn: https://www.linkedin.com/in/-amit  
+
+---
+
+# 📸 Preview  
+*(Add screenshots here if needed)*
+
+---
+
+# ✨ Features
+
+### 🎨 Modern UI/UX  
+- Neon-glassmorphism theme  
+- Smooth dark/light mode switch  
+- Animated gradient text  
+- Circular orbiting avatar  
+- Floating tech bubbles  
+- Hover glow effects  
+- Custom pointer & ring cursor  
+
+### ⚡ Micro Interactions  
+- Framer Motion animations  
+- Smooth entry transitions  
+- Button hover push effects  
+- Scroll-triggered reveals  
+
+### 📁 Professional Sections  
+- Hero section with metrics  
+- About section with education, stats & highlights  
+- Projects with animated border & GitHub links  
+- Skills with glowing progress bars  
+- Certifications with badges & Google Drive links  
+- Contact form with email links  
+- Footer with social icons  
+
+### 💾 Data Persistence  
+- Theme saved using **localStorage**  
+
+---
+
+# 🧩 Folder Structure (Updated)
 
 ```
 amit-portfolio/
@@ -17,193 +63,167 @@ amit-portfolio/
 │   ├── assets/
 │   │   └── avatar.jpg
 │   ├── components/
+│   │   ├── Animations.jsx
+│   │   ├── Animations.css
 │   │   ├── Navbar.jsx
 │   │   ├── Hero.jsx
+│   │   ├── Hero.css
 │   │   ├── About.jsx
+│   │   ├── About.css
 │   │   ├── Projects.jsx
+│   │   ├── Projects.css
 │   │   ├── Skills.jsx
+│   │   ├── Skills.css
 │   │   ├── Certifications.jsx
+│   │   ├── Certifications.css
 │   │   ├── Contact.jsx
+│   │   ├── Contact.css
 │   │   └── Footer.jsx
+│   ├── styles.css
 │   ├── App.jsx
-│   ├── index.js
-│   └── styles.css
+│   └── index.js
+├── .gitignore
 ├── package.json
 └── README.md
 ```
 
 ---
 
-## ⚙️ Tech Stack
+# 🚀 Tech Stack
 
-- **Frontend:** React.js  
-- **Styling:** CSS3 (No Tailwind)  
-- **Animations:** AOS, Framer Motion, CSS keyframes  
-- **Icons:** React Icons  
-- **Build Tool:** Create React App  
-- **Hosting:** Render (Live Demo)
-
----
-
-## ✨ Features
-
-✅ Dark & Light theme toggle (saved in localStorage)  
-✅ Animated hero section with orbiting avatar  
-✅ Smooth scroll and reveal animations  
-✅ Responsive layout (mobile & desktop)  
-✅ Glassmorphism UI components  
-✅ Interactive project cards with hover tilt  
-✅ Animated skill progress bars  
-✅ Certification timeline with icons  
-✅ Contact form with validation  
-✅ Social media links with glow hover  
-✅ Gradient text and neon buttons  
+| Category | Tech |
+|---------|------|
+| **Frontend** | React.js, JSX, CSS3 |
+| **Styling** | Pure CSS, Glassmorphism, Gradients |
+| **Animations** | CSS Keyframes, Framer Motion |
+| **Icons** | React Icons |
+| **Hosting** | Render |
+| **Version Control** | Git + GitHub |
 
 ---
 
-## 🧩 Setup & Installation
+# 🛠 Installation & Setup
 
-### 1️⃣ Prerequisites
-Make sure you have installed:
-- [Node.js](https://nodejs.org/en/) (v14 or newer)
-- npm (comes bundled with Node.js)
-
-Check versions:
-```bash
-node -v
-npm -v
-```
-
----
-
-### 2️⃣ Clone the Repository
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/Amit046/amit-portfolio.git
 cd amit-portfolio
 ```
 
----
-
-### 3️⃣ Install Dependencies
+### 2️⃣ Install Dependencies
 ```bash
 npm install
 ```
 
----
-
-### 4️⃣ Run the Development Server
+### 3️⃣ Start Development Server
 ```bash
 npm start
 ```
-App runs locally at:
+
+Runs at:
 ```
 http://localhost:3000
 ```
 
----
-
-### 5️⃣ Build for Production
+### 4️⃣ Build Production Version
 ```bash
 npm run build
 ```
-The optimized build files will appear in the `/build` directory — ready for deployment.
 
 ---
 
-## 🚀 Deployment Options
+# 🧠 Customization Guide
 
-| Platform | Command / Method |
-|-----------|------------------|
-| **Render** | Auto-deploy from GitHub (used here) |
-| **Vercel** | `npm i -g vercel` → `vercel` |
-| **Netlify** | Drag & drop `/build` folder |
-| **GitHub Pages** | `npm install gh-pages` → set `"homepage"` in `package.json` |
-| **Firebase Hosting** | Deploy via Firebase CLI |
-
----
-
-## 🧠 Customization
-
-### 🎨 Colors
-Edit global colors in `src/styles.css`:
+### 🎨 Change Theme Colors  
+Edit global variables in `styles.css`:
 ```css
 :root {
-  --primary: #667eea;
-  --secondary: #764ba2;
-  --accent: #f093fb;
-  --bg-dark: #0d0d0d;
-  --text-light: #f8f8f8;
+  --primary: #a78bfa;
+  --cyan: #22d3ee;
+  --pink: #ec4899;
+  --dark: #0a0a1a;
 }
 ```
 
-### 💼 Add New Projects
-Edit `src/components/Projects.jsx`:
-```jsx
-const projects = [
-  {
-    title: "AI Legal Advisor",
-    description: "Multilingual chatbot powered by Gemini API",
-    demo: "https://your-demo-link.com",
-    github: "https://github.com/your-username/project-repo",
-  },
-];
+### 🖼 Change Avatar  
+Replace image in:
+```
+src/assets/avatar.jpg
 ```
 
-### 🧩 Add or Edit Skills
-Modify arrays in `src/components/Skills.jsx` to update skill bars and icons.
+### 📦 Add New Project  
+In `Projects.jsx`, edit the `projects[]` array.
+
+### 📜 Add New Certification  
+In `Certifications.jsx`, edit `certifications[]` list.
 
 ---
 
-## 🔮 Recommended Enhancements
+# 🐛 Common Issues & Fixes
 
-- 3D rotating avatar (React Three Fiber)  
-- Dynamic background particles (react-tsparticles)  
-- Console-style intro animation  
-- Scroll progress bar at the top  
-- Custom glowing cursor  
-- “Back to Top” button with fade-in effect  
+### ❌ Light Mode Not Working  
+✔ Add `body.light-mode` selectors in CSS  
+✔ Ensure toggle adds class to `<body>`  
+✔ Clear cache:  
+```
+Ctrl + Shift + R
+```
 
----
+### ❌ Links Not Opening  
+Use proper `<a>` tags:
+```jsx
+<a href={link} target="_blank" rel="noopener noreferrer">
+```
 
-## ⚡ Troubleshooting
-
-| Issue | Fix |
-|-------|-----|
-| `npm install` fails | Clear cache → `npm cache clean --force` |
-| App not loading | Check file paths & imports |
-| Styles missing | Ensure `import "./styles.css";` in `App.jsx` |
-| AOS not working | Add `AOS.init()` in a `useEffect` |
-| Port busy | Run `npm start --port 3001` |
-
----
-
-## 💻 Useful Commands
-
-| Command | Description |
-|----------|-------------|
-| `npm start` | Run development server |
-| `npm run build` | Create optimized production build |
-| `npm run deploy` | Deploy to GitHub Pages (if configured) |
+### ❌ Deployment Fail on Render  
+Add required Node version:
+```
+.node-version → 18
+.nvmrc → 18
+```
 
 ---
 
-## 📸 Live Preview
+# 🚀 Deployment Options
 
-Check it out here:  
-👉 **[Amit's Portfolio Live](https://amit-portfolio11.onrender.com)**
+### ▶ Render Deployment (recommended)
+1. Login to Render  
+2. Connect GitHub repo  
+3. Select branch: `main`  
+4. Build command:  
+```
+npm install && npm run build
+```
+5. Publish folder: `build`
+
+### ▶ Vercel  
+```bash
+npm i -g vercel
+vercel
+```
+
+### ▶ Netlify  
+Drag & drop `/build` folder
+
+### ▶ GitHub Pages  
+Add to package.json:
+```json
+"homepage": "https://Amit046.github.io/amit-portfolio"
+```
 
 ---
 
-## 👨‍💻 Author
+# 💬 Contact
 
-**Amit**  
-💼 Full Stack Developer | Data Science Enthusiast | AI Explorer  
-🔗 [LinkedIn](https://www.linkedin.com/in/-amit)  
-🌐 [Live Portfolio](https://amit-portfolio11.onrender.com)
+📧 Email: (add your email here)  
+🌐 LinkedIn: https://www.linkedin.com/in/-amit  
+🧑‍💻 GitHub: https://github.com/Amit046  
 
 ---
 
+# ⭐ Like this project?
+If you found this useful —  
+**Please star the repository!** ⭐  
 
+> _“Build beautifully. Design boldly. Code smartly.”_
 
-
-> _“Code like an artist. Build like an engineer. Dream like a creator.”_ ✨
