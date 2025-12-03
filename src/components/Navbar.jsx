@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function Navbar({ darkMode, setDarkMode }) {
   const [scrolled, setScrolled] = useState(false);
@@ -8,14 +8,14 @@ function Navbar({ darkMode, setDarkMode }) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
     }
   };
@@ -23,8 +23,8 @@ function Navbar({ darkMode, setDarkMode }) {
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-container">
-        <div className="nav-logo">
-          <span className="logo-text">DataDrivenAmit</span>
+        <div className="nav-logo" onClick={() => scrollToSection("home")}>
+          <span className="logo-text">Amit</span>
           <span className="logo-dot">.</span>
         </div>
 
@@ -57,6 +57,7 @@ function Navbar({ darkMode, setDarkMode }) {
             className="theme-toggle"
             onClick={() => setDarkMode(!darkMode)}
             aria-label="Toggle theme"
+            title="Toggle Theme"
           >
             {darkMode ? "☀️" : "🌙"}
           </button>

@@ -1,0 +1,454 @@
+/* NEW HERO LAYOUT */
+.hero-redesign {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 120px 40px 80px;
+  background: #0a0a1a;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+/* Light Mode */
+body.light-mode .hero-redesign {
+  background: #f8f9fa;
+}
+
+body.light-mode .hero-name,
+body.light-mode .hero-bio,
+body.light-mode .hero-role {
+  color: #1a1a2e;
+}
+
+body.light-mode .hero-bio {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+body.light-mode .hero-label {
+  background: rgba(167, 139, 250, 0.15);
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+body.light-mode .tech-badge {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(167, 139, 250, 0.5);
+}
+
+.hero-glow-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.hero-container-new {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* LEFT SIDE - CONTENT */
+.hero-content-left {
+  animation: fadeInLeft 1s ease;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 50px;
+  color: #22d3ee;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: #22d3ee;
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 10px #22d3ee;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.name-highlight {
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.hero-role {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: #a78bfa;
+}
+
+.role-line {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  border-radius: 10px;
+}
+
+.typing-cursor {
+  animation: blink 1s infinite;
+  color: #22d3ee;
+  margin-left: 5px;
+}
+
+.hero-bio {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+/* METRICS */
+.hero-metrics {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.metric-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.metric-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* BUTTONS */
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  color: #fff;
+  box-shadow: 0 10px 40px rgba(167, 139, 250, 0.4);
+}
+
+.primary-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.primary-btn:hover::before {
+  left: 100%;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 50px rgba(167, 139, 250, 0.6);
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 2px solid rgba(167, 139, 250, 0.5);
+  color: #a78bfa;
+}
+
+.secondary-btn:hover {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: #a78bfa;
+  transform: translateY(-3px);
+}
+
+/* RIGHT SIDE - IMAGE */
+.hero-image-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 1s ease;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 450px;
+  height: 450px;
+}
+
+.image-border {
+  position: absolute;
+  inset: -10px;
+  background: linear-gradient(135deg, #a78bfa, #22d3ee, #ec4899);
+  border-radius: 50%;
+  animation: rotateBorder 8s linear infinite;
+  z-index: 1;
+  filter: blur(20px);
+  opacity: 0.6;
+}
+
+.hero-avatar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
+  border: 5px solid rgba(167, 139, 250, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: floatAvatar 4s ease-in-out infinite;
+}
+
+/* TECH BADGES */
+.tech-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(15, 15, 35, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  border-radius: 50px;
+  color: #22d3ee;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 3;
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+.tech-badge svg {
+  color: #a78bfa;
+}
+
+.badge-1 {
+  top: 15%;
+  right: -15%;
+  animation-delay: 0s;
+}
+
+.badge-2 {
+  top: 50%;
+  right: -20%;
+  animation-delay: 1s;
+}
+
+.badge-3 {
+  bottom: 15%;
+  left: -15%;
+  animation-delay: 2s;
+}
+
+/* PARTICLES */
+.hero-particles-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  border-radius: 50%;
+  animation: particleFloat 4s infinite;
+  box-shadow: 0 0 10px #a78bfa;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+@keyframes rotateBorder {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes floatAvatar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-container-new {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+
+  .hero-content-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-bio {
+    max-width: 100%;
+  }
+
+  .hero-role {
+    justify-content: center;
+  }
+
+  .image-wrapper {
+    width: 350px;
+    height: 350px;
+  }
+
+  .tech-badge {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-redesign {
+    padding: 100px 20px 60px;
+  }
+
+  .hero-metrics {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .image-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+
+  .tech-badge {
+    display: none;
+  }
+}

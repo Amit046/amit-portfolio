@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
+import "./Skills.css";
 
 function Skills() {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,43 +8,56 @@ function Skills() {
 
   const skillCategories = [
     {
-      category: 'Languages',
+      category: "Languages",
+      icon: "💻",
+      color: "#a78bfa",
       skills: [
-        { name: 'Python', level: 85 },
-        { name: 'JavaScript', level: 80 },
-        { name: 'Java', level: 75 },
-        { name: 'SQL', level: 80 },
-        { name: 'C++', level: 70 }
-      ]
+        { name: "Python", level: 85 },
+        { name: "JavaScript", level: 80 },
+        { name: "Java", level: 75 },
+        { name: "SQL", level: 80 },
+      ],
     },
     {
-      category: 'Frontend',
+      category: "Frontend",
+      icon: "🎨",
+      color: "#22d3ee",
       skills: [
-        { name: 'React.js', level: 85 },
-        { name: 'HTML/CSS', level: 90 },
-        { name: 'WebRTC', level: 75 },
-        { name: 'Socket.IO', level: 80 }
-      ]
+        { name: "React.js", level: 85 },
+        { name: "HTML/CSS", level: 90 },
+        { name: "WebRTC", level: 75 },
+        { name: "Socket.IO", level: 80 },
+      ],
     },
     {
-      category: 'Backend & Tools',
+      category: "Backend",
+      icon: "⚙️",
+      color: "#ec4899",
       skills: [
-        { name: 'Node.js', level: 80 },
-        { name: 'Express.js', level: 80 },
-        { name: 'Git', level: 85 },
-        { name: 'Linux', level: 75 }
-      ]
+        { name: "Node.js", level: 80 },
+        { name: "Express.js", level: 80 },
+        { name: "Git", level: 85 },
+      ],
     },
     {
-      category: 'Data & Analytics',
+      category: "Data & Analytics",
+      icon: "📊",
+      color: "#f59e0b",
       skills: [
-        { name: 'Power BI', level: 85 },
-        { name: 'Pandas', level: 80 },
-        { name: 'NumPy', level: 75 },
-        { name: 'Matplotlib', level: 75 },
-        { name: 'Excel', level: 85 }
-      ]
-    }
+        { name: "Power BI", level: 85 },
+        { name: "Pandas", level: 80 },
+        { name: "Excel", level: 85 },
+      ],
+    },
+  ];
+
+  const competencies = [
+    { icon: "💡", title: "Problem Solving", desc: "Advanced DSA & algorithms" },
+    { icon: "🚀", title: "Full-Stack", desc: "End-to-end development" },
+    { icon: "📈", title: "Data Engineering", desc: "SQL & visualization" },
+    { icon: "🤝", title: "Collaboration", desc: "Team-based development" },
+    { icon: "⚡", title: "Fast Learner", desc: "Quick tech adoption" },
+    { icon: "🎯", title: "Detail-Oriented", desc: "Clean, tested code" },
   ];
 
   useEffect(() => {
@@ -51,10 +65,9 @@ function Skills() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Animate progress bars
           const initialProgress = {};
-          skillCategories.forEach(category => {
-            category.skills.forEach(skill => {
+          skillCategories.forEach((category) => {
+            category.skills.forEach((skill) => {
               initialProgress[skill.name] = 0;
             });
           });
@@ -62,8 +75,8 @@ function Skills() {
 
           setTimeout(() => {
             const finalProgress = {};
-            skillCategories.forEach(category => {
-              category.skills.forEach(skill => {
+            skillCategories.forEach((category) => {
+              category.skills.forEach((skill) => {
                 finalProgress[skill.name] = skill.level;
               });
             });
@@ -86,35 +99,58 @@ function Skills() {
   }, []);
 
   return (
-    <section id="skills" className="skills" ref={sectionRef}>
-      <div className="container">
-        <h2 className={`section-title ${isVisible ? 'fade-in' : ''}`}>
-          Skills & <span className="gradient-text">Technologies</span>
-        </h2>
-        
-        <div className="skills-grid">
+    <section id="skills" className="skills-new" ref={sectionRef}>
+      <div className="skills-container-new">
+        <div className={`skills-header ${isVisible ? "fade-in" : ""}`}>
+          <span className="skills-subtitle">Tech Stack</span>
+          <h2 className="skills-title">
+            Skills & <span className="gradient-text">Technologies</span>
+          </h2>
+        </div>
+
+        <div className="skills-grid-new">
           {skillCategories.map((category, catIndex) => (
-            <div 
-              key={catIndex} 
-              className={`skill-category ${isVisible ? 'slide-up' : ''}`}
-              style={{ animationDelay: `${catIndex * 0.15}s` }}
+            <div
+              key={catIndex}
+              className={`skill-category-new ${isVisible ? "slide-up" : ""}`}
+              style={{ animationDelay: `${catIndex * 0.1}s` }}
             >
-              <h3 className="category-title">{category.category}</h3>
-              <div className="skills-list">
+              <div className="category-header-new">
+                <span
+                  className="category-icon-new"
+                  style={{ color: category.color }}
+                >
+                  {category.icon}
+                </span>
+                <h3 className="category-title-new">{category.category}</h3>
+              </div>
+
+              <div className="skills-list-new">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="skill-item">
-                    <div className="skill-header">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{progress[skill.name] || 0}%</span>
+                  <div key={skillIndex} className="skill-item-new">
+                    <div className="skill-header-new">
+                      <span className="skill-name-new">{skill.name}</span>
+                      <span
+                        className="skill-percentage-new"
+                        style={{ color: category.color }}
+                      >
+                        {progress[skill.name] || 0}%
+                      </span>
                     </div>
-                    <div className="skill-bar">
-                      <div 
-                        className="skill-progress"
-                        style={{ 
+                    <div className="skill-bar-new">
+                      <div
+                        className="skill-progress-new"
+                        style={{
                           width: `${progress[skill.name] || 0}%`,
-                          transition: 'width 1.5s ease-out'
+                          background: `linear-gradient(90deg, ${category.color}, rgba(255,255,255,0.2))`,
+                          transition: "width 1.5s ease-out",
                         }}
-                      ></div>
+                      >
+                        <div
+                          className="skill-glow"
+                          style={{ boxShadow: `0 0 20px ${category.color}` }}
+                        ></div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -123,39 +159,16 @@ function Skills() {
           ))}
         </div>
 
-        <div className={`core-competencies ${isVisible ? 'fade-in' : ''}`}>
-          <h3 className="competencies-title">Core Competencies</h3>
-          <div className="competencies-grid">
-            <div className="competency-card">
-              <div className="competency-icon">💻</div>
-              <h4>Software Development</h4>
-              <p>OOP, design patterns, version control, and Agile principles</p>
-            </div>
-            <div className="competency-card">
-              <div className="competency-icon">🧩</div>
-              <h4>Problem Solving</h4>
-              <p>Data structures, algorithms, and computational optimization</p>
-            </div>
-            <div className="competency-card">
-              <div className="competency-icon">🌐</div>
-              <h4>Full-Stack Engineering</h4>
-              <p>Modern web technologies and RESTful API design</p>
-            </div>
-            <div className="competency-card">
-              <div className="competency-icon">📈</div>
-              <h4>Data Handling</h4>
-              <p>SQL, data visualization, and analytics tools</p>
-            </div>
-            <div className="competency-card">
-              <div className="competency-icon">🤝</div>
-              <h4>Collaboration</h4>
-              <p>Effective communication in team-based environments</p>
-            </div>
-            <div className="competency-card">
-              <div className="competency-icon">⚡</div>
-              <h4>Adaptability</h4>
-              <p>Quick learner exploring new technologies and debugging</p>
-            </div>
+        <div className={`competencies-new ${isVisible ? "fade-in" : ""}`}>
+          <h3 className="competencies-title-new">Core Competencies</h3>
+          <div className="competencies-grid-new">
+            {competencies.map((comp, index) => (
+              <div key={index} className="competency-card-new">
+                <div className="competency-icon-new">{comp.icon}</div>
+                <h4>{comp.title}</h4>
+                <p>{comp.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
