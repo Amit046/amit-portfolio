@@ -60,9 +60,9 @@ function Contact() {
     setSubmitted(false); // old state clear
 
     // EmailJS Configuration
-    const SERVICE_ID = "service_yxywumr";
+    const SERVICE_ID = "service_bvgvbgc";
     const TEMPLATE_ID = "template_dud05zo";
-    const PUBLIC_KEY = "UYmvpJLLDCR0XTQe1";
+    const PUBLIC_KEY = "suov0dH8ClqLlDX1l";
 
     try {
       const result = await emailjs.send(
