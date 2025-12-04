@@ -60,7 +60,7 @@ function Hero() {
 
           <p className="hero-bio">
             Full-Stack Engineer & Data Scientist crafting scalable solutions
-            with React, Node.js, and AI. Transforming complex problems into
+            with React, Node.js, Python, Excel, Power BI and AI. Transforming complex problems into
             elegant digital experiences.
           </p>
 

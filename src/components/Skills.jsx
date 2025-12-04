@@ -35,8 +35,8 @@ function Skills() {
       color: "#ec4899",
       skills: [
         { name: "Node.js", level: 80 },
-        { name: "Express.js", level: 80 },
         { name: "Git", level: 85 },
+        
       ],
     },
     {
@@ -47,7 +47,9 @@ function Skills() {
         { name: "Power BI", level: 85 },
         { name: "Pandas", level: 80 },
         { name: "Excel", level: 85 },
-      ],
+        { name: "Machine Learning", level: 75 },
+        { name: "Pipelining", level: 70 },
+     ],
     },
   ];
 
