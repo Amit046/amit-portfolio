@@ -60,7 +60,7 @@ function Contact() {
     setSubmitted(false); // old state clear
 
     // EmailJS Configuration
-    const SERVICE_ID = "service_bvgvbgc";
+const SERVICE_ID = "service_bvgvbgc";
     const TEMPLATE_ID = "template_dud05zo";
     const PUBLIC_KEY = "suov0dH8ClqLlDX1l";
 
