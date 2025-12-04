@@ -57,11 +57,12 @@ function Contact() {
 
     setIsSubmitting(true);
     setError("");
+    setSubmitted(false); // old state clear
 
     // EmailJS Configuration
-    const SERVICE_ID = "YOUR_SERVICE_ID"; // Replace with your EmailJS service ID
-    const TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // Replace with your EmailJS template ID
-    const PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // Replace with your EmailJS public key
+    const SERVICE_ID = "service_yxywumr";
+    const TEMPLATE_ID = "template_dud05zo";
+    const PUBLIC_KEY = "UYmvpJLLDCR0XTQe1";
 
     try {
       const result = await emailjs.send(
@@ -69,26 +70,32 @@ function Contact() {
         TEMPLATE_ID,
         {
           from_name: formData.name,
-          from_mobile: formData.mobile,
           from_email: formData.email,
+          phone: formData.mobile,
+          address: "N/A",
           message: formData.message,
-          to_email: "amityt500678@gmail.com",
         },
         PUBLIC_KEY
       );
 
       console.log("Email sent successfully:", result);
+
+      // ✅ popup trigger
       setSubmitted(true);
+      // ✅ form clear
       setFormData({ name: "", mobile: "", email: "", message: "" });
 
+      // optional: 5 sec baad popup hata do
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
     } catch (err) {
       console.error("EmailJS error:", err);
+      console.error("Status:", err.status, "Text:", err.text);
       setError(
         "Failed to send message. Please try again or contact me directly via email."
       );
+      setSubmitted(false);
     } finally {
       setIsSubmitting(false);
     }
