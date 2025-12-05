@@ -20,18 +20,14 @@ export function CustomCursor() {
     };
 
     const animate = () => {
-      // Smooth follow for ring
       cursorX += (mouseX - cursorX) * 0.15;
       cursorY += (mouseY - cursorY) * 0.15;
-
-      // Instant follow for dot
       cursorDotX += (mouseX - cursorDotX) * 0.8;
       cursorDotY += (mouseY - cursorDotY) * 0.8;
 
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
       }
-
       if (cursorDotRef.current) {
         cursorDotRef.current.style.transform = `translate3d(${cursorDotX}px, ${cursorDotY}px, 0)`;
       }
@@ -42,7 +38,6 @@ export function CustomCursor() {
     window.addEventListener("mousemove", moveCursor);
     animate();
 
-    // Hover effects
     const handleMouseOver = (e) => {
       const target = e.target.closest(
         "a, button, .project-card, .skill-category, .certification-card"
@@ -187,7 +182,7 @@ export function Dock() {
   );
 }
 
-// Gooey Nav
+// FIXED Gooey Nav - Correct blob positioning
 export function GooeyNav() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -196,6 +191,7 @@ export function GooeyNav() {
     { label: "About", id: "about" },
     { label: "Projects", id: "projects" },
     { label: "Skills", id: "skills" },
+    { label: "Certifications", id: "certifications" },
     { label: "Contact", id: "contact" },
   ];
 
@@ -207,6 +203,10 @@ export function GooeyNav() {
     }
   };
 
+  // Calculate blob position based on active index
+  // Each button is approximately 44px height + 6px gap = 50px total
+  const blobPosition = 12 + activeIndex * 44; // Starting padding + (index * button height)
+
   return (
     <>
       <div className="gooey-nav-container">
@@ -214,7 +214,7 @@ export function GooeyNav() {
           <div
             className="gooey-blob"
             style={{
-              top: `${16 + activeIndex * 48}px`,
+              top: `${blobPosition}px`,
             }}
           />
           {navItems.map((item, index) => (

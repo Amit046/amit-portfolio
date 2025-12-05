@@ -1,6 +1,9 @@
-/* NEW SKILLS LAYOUT */
+/* ============================================
+   COMPACT SINGLE-LINE SKILLS LAYOUT
+   ============================================ */
+
 .skills-new {
-  padding: 120px 40px;
+  padding: 100px 40px;
   background: linear-gradient(180deg, #0a0a1a 0%, #0f0f23 100%);
   position: relative;
 }
@@ -12,41 +15,45 @@
 
 .skills-header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .skills-subtitle {
   display: inline-block;
-  padding: 8px 20px;
+  padding: 6px 16px;
   background: rgba(167, 139, 250, 0.1);
   border: 1px solid rgba(167, 139, 250, 0.3);
   border-radius: 50px;
   color: #22d3ee;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .skills-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
   color: #fff;
 }
 
+/* ============================================
+   MAIN GRID - 4 COLUMNS IN ONE ROW
+   ============================================ */
+
 .skills-grid-new {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-  margin-bottom: 80px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
 }
 
 .skill-category-new {
-  padding: 35px;
+  padding: 25px 20px;
   background: rgba(15, 15, 35, 0.7);
   backdrop-filter: blur(20px);
-  border-radius: 25px;
+  border-radius: 20px;
   border: 2px solid transparent;
   transition: all 0.3s ease;
   background-clip: padding-box;
@@ -61,13 +68,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 25px;
+  border-radius: 20px;
   padding: 2px;
-  background: linear-gradient(135deg, 
-    #a78bfa, 
-    #22d3ee,
-    #a78bfa
-  );
+  background: linear-gradient(135deg, #a78bfa, #22d3ee, #a78bfa);
   background-size: 200% 200%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -96,30 +99,38 @@
   }
 }
 
+/* ============================================
+   COMPACT CATEGORY HEADER
+   ============================================ */
+
 .category-header-new {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
   border-bottom: 2px solid rgba(167, 139, 250, 0.2);
 }
 
 .category-icon-new {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   filter: drop-shadow(0 0 15px currentColor);
 }
 
 .category-title-new {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: #fff;
 }
 
+/* ============================================
+   COMPACT SKILLS LIST
+   ============================================ */
+
 .skills-list-new {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 18px;
 }
 
 .skill-item-new {
@@ -130,22 +141,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .skill-name-new {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .skill-percentage-new {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 900;
 }
 
 .skill-bar-new {
-  height: 12px;
+  height: 10px;
   background: rgba(167, 139, 250, 0.1);
   border-radius: 10px;
   overflow: hidden;
@@ -178,31 +189,34 @@
   }
 }
 
-/* COMPETENCIES */
+/* ============================================
+   COMPETENCIES SECTION
+   ============================================ */
+
 .competencies-new {
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 .competencies-title-new {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 800;
   text-align: center;
   color: #fff;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .competencies-grid-new {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
 }
 
 .competency-card-new {
-  padding: 30px;
+  padding: 25px 20px;
   background: rgba(15, 15, 35, 0.6);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(167, 139, 250, 0.2);
-  border-radius: 20px;
+  border-radius: 18px;
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -215,24 +229,27 @@
 }
 
 .competency-icon-new {
-  font-size: 3rem;
-  margin-bottom: 15px;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
 }
 
 .competency-card-new h4 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #a78bfa;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .competency-card-new p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-/* Animations */
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
 .fade-in {
   animation: fadeIn 0.8s ease;
 }
@@ -263,24 +280,42 @@
   }
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Large Desktop */
+@media (max-width: 1400px) {
   .skills-grid-new {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
   }
 
-  .competencies-grid-new {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  .skill-category-new {
+    padding: 22px 18px;
   }
 }
 
+/* Tablet Large */
+@media (max-width: 1024px) {
+  .skills-grid-new {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .competencies-grid-new {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet */
 @media (max-width: 768px) {
   .skills-new {
     padding: 80px 20px;
   }
 
   .skills-header {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
   }
 
   .skills-grid-new {
@@ -289,22 +324,125 @@
   }
 
   .skill-category-new {
-    padding: 25px;
+    padding: 25px 20px;
   }
 
   .category-icon-new {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .category-title-new {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .competencies-new {
-    margin-top: 60px;
+    margin-top: 50px;
+  }
+
+  .competencies-grid-new {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .skills-new {
+    padding: 60px 15px;
+  }
+
+  .skills-title {
+    font-size: 1.8rem;
+  }
+
+  .skill-category-new {
+    padding: 20px 15px;
+  }
+
+  .category-header-new {
+    gap: 8px;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+  }
+
+  .category-icon-new {
+    font-size: 1.4rem;
+  }
+
+  .category-title-new {
+    font-size: 0.95rem;
+  }
+
+  .skill-name-new,
+  .skill-percentage-new {
+    font-size: 0.85rem;
+  }
+
+  .skill-bar-new {
+    height: 8px;
+  }
+
+  .skills-list-new {
+    gap: 15px;
   }
 
   .competencies-grid-new {
     grid-template-columns: 1fr;
   }
+
+  .competency-icon-new {
+    font-size: 2rem;
+  }
+
+  .competency-card-new h4 {
+    font-size: 0.95rem;
+  }
+
+  .competency-card-new p {
+    font-size: 0.8rem;
+  }
+}
+
+/* ============================================
+   LIGHT MODE SUPPORT
+   ============================================ */
+
+body.light-mode .skills-new {
+  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.light-mode .skill-category-new {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(167, 139, 250, 0.2);
+}
+
+body.light-mode .skill-category-new:hover {
+  box-shadow: 0 20px 50px rgba(167, 139, 250, 0.2);
+}
+
+body.light-mode .category-header-new {
+  border-bottom-color: rgba(167, 139, 250, 0.3);
+}
+
+body.light-mode .category-title-new {
+  color: #1a1a2e;
+}
+
+body.light-mode .skill-name-new {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+body.light-mode .skill-bar-new {
+  background: rgba(167, 139, 250, 0.15);
+}
+
+body.light-mode .competency-card-new {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+body.light-mode .competencies-title-new {
+  color: #1a1a2e;
+}
+
+body.light-mode .competency-card-new h4 {
+  color: #7c3aed;
 }

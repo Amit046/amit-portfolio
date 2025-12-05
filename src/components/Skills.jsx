@@ -36,7 +36,6 @@ function Skills() {
       skills: [
         { name: "Node.js", level: 80 },
         { name: "Git", level: 85 },
-        
       ],
     },
     {
@@ -47,9 +46,9 @@ function Skills() {
         { name: "Power BI", level: 85 },
         { name: "Pandas", level: 80 },
         { name: "Excel", level: 85 },
-        { name: "Machine Learning", level: 75 },
+        { name: "ML", level: 75 },
         { name: "Pipelining", level: 70 },
-     ],
+      ],
     },
   ];
 
@@ -67,6 +66,8 @@ function Skills() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+
+          // Initialize progress at 0
           const initialProgress = {};
           skillCategories.forEach((category) => {
             category.skills.forEach((skill) => {
@@ -75,6 +76,7 @@ function Skills() {
           });
           setProgress(initialProgress);
 
+          // Animate to actual values
           setTimeout(() => {
             const finalProgress = {};
             skillCategories.forEach((category) => {
@@ -103,6 +105,7 @@ function Skills() {
   return (
     <section id="skills" className="skills-new" ref={sectionRef}>
       <div className="skills-container-new">
+        {/* Header */}
         <div className={`skills-header ${isVisible ? "fade-in" : ""}`}>
           <span className="skills-subtitle">Tech Stack</span>
           <h2 className="skills-title">
@@ -110,6 +113,7 @@ function Skills() {
           </h2>
         </div>
 
+        {/* Skills Grid - 4 Columns */}
         <div className="skills-grid-new">
           {skillCategories.map((category, catIndex) => (
             <div
@@ -117,6 +121,7 @@ function Skills() {
               className={`skill-category-new ${isVisible ? "slide-up" : ""}`}
               style={{ animationDelay: `${catIndex * 0.1}s` }}
             >
+              {/* Category Header */}
               <div className="category-header-new">
                 <span
                   className="category-icon-new"
@@ -127,6 +132,7 @@ function Skills() {
                 <h3 className="category-title-new">{category.category}</h3>
               </div>
 
+              {/* Skills List */}
               <div className="skills-list-new">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex} className="skill-item-new">
@@ -145,7 +151,6 @@ function Skills() {
                         style={{
                           width: `${progress[skill.name] || 0}%`,
                           background: `linear-gradient(90deg, ${category.color}, rgba(255,255,255,0.2))`,
-                          transition: "width 1.5s ease-out",
                         }}
                       >
                         <div
@@ -161,11 +166,16 @@ function Skills() {
           ))}
         </div>
 
+        {/* Competencies Section */}
         <div className={`competencies-new ${isVisible ? "fade-in" : ""}`}>
           <h3 className="competencies-title-new">Core Competencies</h3>
           <div className="competencies-grid-new">
             {competencies.map((comp, index) => (
-              <div key={index} className="competency-card-new">
+              <div
+                key={index}
+                className="competency-card-new"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <div className="competency-icon-new">{comp.icon}</div>
                 <h4>{comp.title}</h4>
                 <p>{comp.desc}</p>
