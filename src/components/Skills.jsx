@@ -44,7 +44,7 @@ function Skills() {
       color: "#f59e0b",
       skills: [
         { name: "Power BI", level: 85 },
-        { name: "Pandas", level: 80 },
+        { name: "Data Visualization", level: 80 },
         { name: "Excel", level: 85 },
         { name: "ML", level: 75 },
         { name: "Pipelining", level: 70 },
