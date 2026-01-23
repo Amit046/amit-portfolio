@@ -1,1 +1,13 @@
-node_modules
+# dependencies
+node_modules/
+node_modules/.cache/
+
+# caches
+.cache/
+.eslintcache
+
+# build output
+build/
+
+# env
+.env
