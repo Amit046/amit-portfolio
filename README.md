@@ -17,11 +17,6 @@ Full Stack Developer | Data Science Enthusiast | AI Explorer
 
 ---
 
-# 📸 Preview  
-*(Add screenshots here if needed)*
-
----
-
 # ✨ Features
 
 ### 🎨 Modern UI/UX  
