@@ -27,53 +27,89 @@ function Projects() {
     };
   }, []);
 
-  const projects = [
-    {
-      title: "Video Calling App",
-      period: "May 2025 – Jul 2025",
-      description:
-        "Enterprise-grade real-time video communication platform with peer-to-peer connectivity, low-latency streaming, and seamless chat integration.",
-      tech: ["React.js", "WebRTC", "Socket.IO", "Node.js", "Express.js"],
-      icon: "📹",
-      link: "https://github.com/Amit046/Video_Call_App",
-      highlights: [
-        "Sub-100ms P2P latency",
-        "Real-time chat sync",
-        "HD screen sharing",
-      ],
-      color: "#a78bfa",
-    },
-    {
-      title: "Mobile Sales Dashboard",
-      period: "Jul 2025",
-      description:
-        "Interactive BI dashboard with multi-dimensional analysis, custom DAX calculations, and drill-down capabilities for comprehensive sales insights.",
-      tech: ["Power BI", "Excel", "DAX", "Data Modeling"],
-      icon: "📊",
-      link: "https://github.com/Amit046/Mobile-Sales-Dashboard-PowerBI",
-      highlights: [
-        "Multi-dimensional analysis",
-        "Dynamic KPI cards",
-        "YoY comparisons",
-      ],
-      color: "#22d3ee",
-    },
-    {
-      title: "CPU Scheduling Simulator",
-      period: "Mar 2025 – Apr 2025",
-      description:
-        "Desktop application simulating OS scheduling algorithms with visual Gantt charts, performance metrics, and modular architecture.",
-      tech: ["Python", "PyQt5", "OOP", "Data Visualization"],
-      icon: "⚙️",
-      link: "https://github.com/Amit046/Process-Scheduling-Dashboard",
-      highlights: [
-        "Interactive Gantt charts",
-        "Real-time metrics",
-        "Modular design",
-      ],
-      color: "#ec4899",
-    },
-  ];
+ const projects = [
+   {
+     title: "Video Calling App",
+     period: "May 2025 – Aug 2025",
+     description:
+       "Enterprise-grade real-time video communication platform with peer-to-peer connectivity, low-latency streaming, and seamless chat integration.",
+     tech: ["React.js", "WebRTC", "Socket.IO", "Node.js", "Express.js"],
+     icon: "📹",
+     link: "https://github.com/Amit046/Video_Call_App",
+     highlights: [
+       "Sub-100ms P2P latency",
+       "Real-time chat sync",
+       "HD screen sharing",
+     ],
+     color: "#a78bfa",
+   },
+   {
+     title: "ML-Based Weather Analytics Dashboard",
+     period: "Nov 2025 – Dec 2025",
+     description:
+       "Real-time weather and AQI predictive analytics dashboard using machine learning. Collects live API data, predicts temperature trends, analyzes pollution patterns, and visualizes multi-city insights.",
+     tech: [
+       "Python",
+       "Flask",
+       "Machine Learning",
+       "Data Analytics",
+       "Data Visualization",
+     ],
+     icon: "🌦️",
+     link: "https://github.com/Amit046/real-time-weather-predictive-analytics",
+     highlights: [
+       "Live API integration",
+       "ML predictions",
+       "Multi-city insights",
+     ],
+     color: "#10b981",
+   },
+   {
+     title: "Meta Ad Performance Dashboard",
+     period: "Dec 2025",
+     description:
+       "Interactive Power BI dashboard analyzing Meta ad performance. Tracks KPIs like Impressions, Clicks, CTR, Conversion Rate, Purchases, and Revenue with platform, country, and time-based insights.",
+     tech: ["Power BI", "DAX", "Data Modeling", "Data Analytics"],
+     icon: "📈",
+     link: "https://github.com/Amit046/Meta-Ad-Performance-Dashboard",
+     highlights: [
+       "Multi-platform tracking",
+       "Custom DAX metrics",
+       "Time-based analysis",
+     ],
+     color: "#f59e0b",
+   },
+   {
+     title: "Mobile Sales Dashboard",
+     period: "Jul 2025",
+     description:
+       "Interactive BI dashboard with multi-dimensional analysis, custom DAX calculations, and drill-down capabilities for comprehensive sales insights.",
+     tech: ["Power BI", "Excel", "DAX", "Data Modeling"],
+     icon: "📊",
+     link: "https://github.com/Amit046/Mobile-Sales-Dashboard-PowerBI",
+     highlights: [
+       "Multi-dimensional analysis",
+       "Dynamic KPI cards",
+       "YoY comparisons",
+     ],
+     color: "#22d3ee",
+   },
+   {
+     title: "CPU Scheduling Simulator",
+     period: "Mar 2025 – Apr 2025",
+     description:
+       "Desktop application simulating OS scheduling algorithms with visual Gantt charts, performance metrics, and modular architecture.",
+     tech: ["Python", "PyQt5", "OOP", "Data Visualization"],
+     icon: "⚙️",
+     link: "https://github.com/Amit046/Process-Scheduling-Dashboard",
+     highlights: [
+       "Interactive Gantt charts",
+       "Real-time metrics",
+       "Modular design",
+     ],
+     color: "#ec4899",
+   },
+ ];
 
   return (
     <section id="projects" className="projects-new" ref={sectionRef}>
