@@ -8,6 +8,7 @@ import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Animations from "./components/Animations";
+import Greeting from "./components/Greeting";
 import "./styles.css";
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
       ></div>
 
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Greeting />
       <Hero />
       <About />
       <Projects />

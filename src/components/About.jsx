@@ -30,7 +30,7 @@ function About() {
     <section id="about" className="about-new" ref={sectionRef}>
       <div className="about-container-new">
         <div className={`about-header ${isVisible ? "fade-in" : ""}`}>
-          <span className="about-subtitle">Who I Am</span>
+          <span className="about-subtitle">Who I Am? </span>
           <h2 className="about-title">
             Turning Ideas Into <span className="gradient-text">Reality</span>
           </h2>
