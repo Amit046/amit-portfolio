@@ -73,7 +73,9 @@ amit-portfolio/
 │   │   ├── Certifications.css
 │   │   ├── Contact.jsx
 │   │   ├── Contact.css
-│   │   └── Footer.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Greeting.jsx          ← ADD THIS FILE
+│   │   └── Greeting.css          ← ADD THIS FILE
 │   ├── styles.css
 │   ├── App.jsx
 │   └── index.js
