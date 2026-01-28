@@ -4,7 +4,11 @@ import "./Projects.css";
 function Projects() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeProject, setActiveProject] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
   const sectionRef = useRef(null);
+  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,89 +31,133 @@ function Projects() {
     };
   }, []);
 
- const projects = [
-   {
-     title: "Video Calling App",
-     period: "May 2025 – Aug 2025",
-     description:
-       "Enterprise-grade real-time video communication platform with peer-to-peer connectivity, low-latency streaming, and seamless chat integration.",
-     tech: ["React.js", "WebRTC", "Socket.IO", "Node.js", "Express.js"],
-     icon: "📹",
-     link: "https://github.com/Amit046/Video_Call_App",
-     highlights: [
-       "Sub-100ms P2P latency",
-       "Real-time chat sync",
-       "HD screen sharing",
-     ],
-     color: "#a78bfa",
-   },
-   {
-     title: "ML-Based Weather Analytics Dashboard",
-     period: "Nov 2025 – Dec 2025",
-     description:
-       "Real-time weather and AQI predictive analytics dashboard using machine learning. Collects live API data, predicts temperature trends, analyzes pollution patterns, and visualizes multi-city insights.",
-     tech: [
-       "Python",
-       "Flask",
-       "Machine Learning",
-       "Data Analytics",
-       "Data Visualization",
-     ],
-     icon: "🌦️",
-     link: "https://github.com/Amit046/real-time-weather-predictive-analytics",
-     highlights: [
-       "Live API integration",
-       "ML predictions",
-       "Multi-city insights",
-     ],
-     color: "#10b981",
-   },
-   {
-     title: "Meta Ad Performance Dashboard",
-     period: "Dec 2025",
-     description:
-       "Interactive Power BI dashboard analyzing Meta ad performance. Tracks KPIs like Impressions, Clicks, CTR, Conversion Rate, Purchases, and Revenue with platform, country, and time-based insights.",
-     tech: ["Power BI", "DAX", "Data Modeling", "Data Analytics"],
-     icon: "📈",
-     link: "https://github.com/Amit046/Meta-Ad-Performance-Dashboard",
-     highlights: [
-       "Multi-platform tracking",
-       "Custom DAX metrics",
-       "Time-based analysis",
-     ],
-     color: "#f59e0b",
-   },
-   {
-     title: "Mobile Sales Dashboard",
-     period: "Jul 2025",
-     description:
-       "Interactive BI dashboard with multi-dimensional analysis, custom DAX calculations, and drill-down capabilities for comprehensive sales insights.",
-     tech: ["Power BI", "Excel", "DAX", "Data Modeling"],
-     icon: "📊",
-     link: "https://github.com/Amit046/Mobile-Sales-Dashboard-PowerBI",
-     highlights: [
-       "Multi-dimensional analysis",
-       "Dynamic KPI cards",
-       "YoY comparisons",
-     ],
-     color: "#22d3ee",
-   },
-   {
-     title: "CPU Scheduling Simulator",
-     period: "Mar 2025 – Apr 2025",
-     description:
-       "Desktop application simulating OS scheduling algorithms with visual Gantt charts, performance metrics, and modular architecture.",
-     tech: ["Python", "PyQt5", "OOP", "Data Visualization"],
-     icon: "⚙️",
-     link: "https://github.com/Amit046/Process-Scheduling-Dashboard",
-     highlights: [
-       "Interactive Gantt charts",
-       "Real-time metrics",
-       "Modular design",
-     ],
-     color: "#ec4899",
-   },
- ];
+  const projects = [
+    {
+      title: "Video Calling App",
+      period: "May 2025 – Aug 2025",
+      description:
+        "Enterprise-grade real-time video communication platform with peer-to-peer connectivity, low-latency streaming, and seamless chat integration.",
+      tech: ["React.js", "WebRTC", "Socket.IO", "Node.js", "Express.js"],
+      icon: "📹",
+      link: "https://github.com/Amit046/Video_Call_App",
+      highlights: [
+        "Sub-100ms P2P latency",
+        "Real-time chat sync",
+        "HD screen sharing",
+      ],
+      color: "#a78bfa",
+    },
+    {
+      title: "ML-Based Weather Analytics Dashboard",
+      period: "Nov 2025 – Dec 2025",
+      description:
+        "Real-time weather and AQI predictive analytics dashboard using machine learning. Collects live API data, predicts temperature trends, analyzes pollution patterns, and visualizes multi-city insights.",
+      tech: [
+        "Python",
+        "Flask",
+        "Machine Learning",
+        "Data Analytics",
+        "Data Visualization",
+      ],
+      icon: "🌦️",
+      link: "https://github.com/Amit046/real-time-weather-predictive-analytics",
+      highlights: [
+        "Live API integration",
+        "ML predictions",
+        "Multi-city insights",
+      ],
+      color: "#10b981",
+    },
+    {
+      title: "Meta Ad Performance Dashboard",
+      period: "Dec 2025",
+      description:
+        "Interactive Power BI dashboard analyzing Meta ad performance. Tracks KPIs like Impressions, Clicks, CTR, Conversion Rate, Purchases, and Revenue with platform, country, and time-based insights.",
+      tech: ["Power BI", "DAX", "Data Modeling", "Data Analytics"],
+      icon: "📈",
+      link: "https://github.com/Amit046/Meta-Ad-Performance-Dashboard",
+      highlights: [
+        "Multi-platform tracking",
+        "Custom DAX metrics",
+        "Time-based analysis",
+      ],
+      color: "#f59e0b",
+    },
+    {
+      title: "Mobile Sales Dashboard",
+      period: "Jul 2025",
+      description:
+        "Interactive BI dashboard with multi-dimensional analysis, custom DAX calculations, and drill-down capabilities for comprehensive sales insights.",
+      tech: ["Power BI", "Excel", "DAX", "Data Modeling"],
+      icon: "📊",
+      link: "https://github.com/Amit046/Mobile-Sales-Dashboard-PowerBI",
+      highlights: [
+        "Multi-dimensional analysis",
+        "Dynamic KPI cards",
+        "YoY comparisons",
+      ],
+      color: "#22d3ee",
+    },
+    {
+      title: "CPU Scheduling Simulator",
+      period: "Mar 2025 – Apr 2025",
+      description:
+        "Desktop application simulating OS scheduling algorithms with visual Gantt charts, performance metrics, and modular architecture.",
+      tech: ["Python", "PyQt5", "OOP", "Data Visualization"],
+      icon: "⚙️",
+      link: "https://github.com/Amit046/Process-Scheduling-Dashboard",
+      highlights: [
+        "Interactive Gantt charts",
+        "Real-time metrics",
+        "Modular design",
+      ],
+      color: "#ec4899",
+    },
+  ];
+
+  // Mouse drag handlers
+  const handleMouseDown = (e) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    scrollContainerRef.current.style.cursor = "grabbing";
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.style.cursor = "grab";
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.style.cursor = "grab";
+    }
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  // Scroll by clicking navigation buttons
+  const scrollTo = (direction) => {
+    if (!scrollContainerRef.current) return;
+    const scrollAmount = 400;
+    const newScrollLeft =
+      scrollContainerRef.current.scrollLeft +
+      (direction === "left" ? -scrollAmount : scrollAmount);
+    scrollContainerRef.current.scrollTo({
+      left: newScrollLeft,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <section id="projects" className="projects-new" ref={sectionRef}>
@@ -124,80 +172,135 @@ function Projects() {
           </p>
         </div>
 
-        <div className="projects-grid-new">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`project-card-new ${isVisible ? "slide-up" : ""} ${
-                activeProject === index ? "active" : ""
-              }`}
-              style={{ animationDelay: `${index * 0.15}s` }}
-              onMouseEnter={() => setActiveProject(index)}
-            >
-              <div className="project-top">
-                <div
-                  className="project-icon-new"
-                  style={{ color: project.color }}
-                >
-                  {project.icon}
-                </div>
-                <span className="project-period-new">{project.period}</span>
-              </div>
+        {/* Scroll Navigation Buttons */}
+        <div className="scroll-navigation">
+          <button
+            className="scroll-btn scroll-btn-left"
+            onClick={() => scrollTo("left")}
+            aria-label="Scroll left"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M15 18l-6-6 6-6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+          <button
+            className="scroll-btn scroll-btn-right"
+            onClick={() => scrollTo("right")}
+            aria-label="Scroll right"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M9 18l6-6-6-6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
 
-              <h3 className="project-title-new">{project.title}</h3>
-              <p className="project-description-new">{project.description}</p>
-
-              <div className="project-highlights-new">
-                {project.highlights.map((highlight, idx) => (
-                  <div key={idx} className="highlight-badge">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M20 6L9 17l-5-5"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    {highlight}
-                  </div>
-                ))}
-              </div>
-
-              <div className="project-tech-new">
-                {project.tech.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="tech-badge-new"
-                    style={{ borderColor: project.color }}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link-new"
-                style={{
-                  background: `linear-gradient(135deg, ${project.color}, rgba(255,255,255,0.1))`,
-                }}
+        {/* Horizontal Scroll Container */}
+        <div
+          className="projects-scroll-container"
+          ref={scrollContainerRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+        >
+          <div className="projects-grid-horizontal">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className={`project-card-new ${isVisible ? "slide-up" : ""} ${
+                  activeProject === index ? "active" : "inactive"
+                }`}
+                style={{ animationDelay: `${index * 0.15}s` }}
+                onMouseEnter={() => setActiveProject(index)}
+                onMouseLeave={() => setActiveProject(-1)}
               >
-                <span>View Project</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M5 12h14M12 5l7 7-7 7"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-          ))}
+                <div className="project-top">
+                  <div
+                    className="project-icon-new"
+                    style={{ color: project.color }}
+                  >
+                    {project.icon}
+                  </div>
+                  <span className="project-period-new">{project.period}</span>
+                </div>
+
+                <h3 className="project-title-new">{project.title}</h3>
+                <p className="project-description-new">{project.description}</p>
+
+                <div className="project-highlights-new">
+                  {project.highlights.map((highlight, idx) => (
+                    <div key={idx} className="highlight-badge">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M20 6L9 17l-5-5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      {highlight}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="project-tech-new">
+                  {project.tech.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="tech-badge-new"
+                      style={{ borderColor: project.color }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link-new"
+                  style={{
+                    background: `linear-gradient(135deg, ${project.color}, rgba(255,255,255,0.1))`,
+                  }}
+                >
+                  <span>View Project</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="scroll-indicator">
+          <span>← Drag to explore more projects →</span>
         </div>
       </div>
     </section>
