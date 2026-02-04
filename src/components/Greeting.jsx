@@ -3,12 +3,12 @@ import "./Greeting.css";
 
 // Define greetings outside component to avoid dependency warning
 const greetings = [
-  { text: "Hello", language: "English" },
-  { text: "नमस्ते", language: "Hindi" },
-  { text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ", language: "Punjabi" },
-  { text: "வணக்கம்", language: "Tamil" },
-  { text: "నమస్కారం", language: "Telugu" },
-  { text: "مرحبا", language: "Arabic" },
+  { text: "Hello", language: "English", hinglish: "Hello" },
+  { text: "नमस्ते", language: "Hindi", hinglish: "Namaste" },
+  { text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ", language: "Punjabi", hinglish: "Sat Sri Akaal" },
+  { text: "வணக்கம்", language: "Tamil", hinglish: "Vanakkam" },
+  { text: "నమస్కారం", language: "Telugu", hinglish: "Namaskaram" },
+  { text: "مرحبا", language: "Urdu / Arabic", hinglish: "Marhaba" },
 ];
 
 function Greeting() {
