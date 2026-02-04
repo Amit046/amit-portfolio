@@ -89,7 +89,7 @@ function About() {
               <div className="stat-item-new">
                 <div className="stat-icon">💼</div>
                 <div className="stat-content">
-                  <span className="stat-num">3+</span>
+                  <span className="stat-num">5+</span>
                   <span className="stat-text">Projects</span>
                 </div>
               </div>
