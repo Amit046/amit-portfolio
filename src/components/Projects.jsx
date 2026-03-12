@@ -33,7 +33,7 @@ function Projects() {
 
   const projects = [
     {
-      title: "Video Calling App",
+      title: "Video Calling Website",
       period: "May 2025 – Aug 2025",
       description:
         "Enterprise-grade real-time video communication platform with peer-to-peer connectivity, low-latency streaming, and seamless chat integration.",
