@@ -96,17 +96,17 @@
 .marquee-track-outer {
   display: flex;
   width: max-content;
-  animation: marqueeScroll 28s linear infinite;
+  animation: marqueeScroll 120s linear infinite;
 }
 
 /* Reverse direction for soft skills */
 .marquee-track-outer--reverse {
-  animation: marqueeScrollReverse 24s linear infinite;
+  animation: marqueeScrollReverse 110s linear infinite;
 }
 
 /* Slower speed for competencies */
 .marquee-track-outer--slow {
-  animation: marqueeScroll 20s linear infinite;
+  animation: marqueeScroll 100s linear infinite;
 }
 
 .marquee-track-outer:hover,
