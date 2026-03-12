@@ -3,53 +3,40 @@ import "./Skills.css";
 
 function Skills() {
   const [isVisible, setIsVisible] = useState(false);
-  const [progress, setProgress] = useState({});
   const sectionRef = useRef(null);
 
-  const skillCategories = [
-    {
-      category: "Languages",
-      icon: "💻",
-      color: "#a78bfa",
-      skills: [
-        { name: "Python", level: 85 },
-        { name: "JavaScript", level: 80 },
-        { name: "Java", level: 75 },
-        { name: "SQL", level: 80 },
-      ],
-    },
-    {
-      category: "Frontend",
-      icon: "🎨",
-      color: "#22d3ee",
-      skills: [
-        { name: "React.js", level: 85 },
-        { name: "HTML/CSS", level: 90 },
-        { name: "WebRTC", level: 75 },
-        { name: "Socket.IO", level: 80 },
-      ],
-    },
-    {
-      category: "Backend",
-      icon: "⚙️",
-      color: "#ec4899",
-      skills: [
-        { name: "Node.js", level: 80 },
-        { name: "Git", level: 85 },
-      ],
-    },
-    {
-      category: "Data & Analytics",
-      icon: "📊",
-      color: "#f59e0b",
-      skills: [
-        { name: "Power BI", level: 85 },
-        { name: "Data Visualization", level: 80 },
-        { name: "Excel", level: 85 },
-        { name: "ML", level: 75 },
-        { name: "Pipelining", level: 70 },
-      ],
-    },
+  const softSkills = [
+    { icon: "🧠", label: "Problem Solving" },
+    { icon: "🤝", label: "Teamwork" },
+    { icon: "⚡", label: "Adaptability" },
+    { icon: "🎯", label: "Detail Oriented" },
+    { icon: "🕐", label: "Time Management" },
+    { icon: "💬", label: "Communication" },
+    { icon: "🚀", label: "Fast Learner" },
+    { icon: "🔍", label: "Critical Thinking" },
+    { icon: "💡", label: "Creativity" },
+    { icon: "📋", label: "Leadership" },
+    { icon: "🔄", label: "Agile Mindset" },
+    { icon: "🌐", label: "Open Source" },
+  ];
+
+  const techStack = [
+    { icon: "🐍", label: "Python" },
+    { icon: "⚛️", label: "React.js" },
+    { icon: "🟢", label: "Node.js" },
+    { icon: "🍃", label: "MongoDB" },
+    { icon: "📊", label: "Power BI" },
+    { icon: "🐘", label: "PostgreSQL" },
+    { icon: "🔥", label: "TensorFlow" },
+    { icon: "🐼", label: "Pandas" },
+    { icon: "🔗", label: "WebRTC" },
+    { icon: "🐙", label: "Git" },
+    { icon: "🌐", label: "Socket.IO" },
+    { icon: "📈", label: "Excel" },
+    { icon: "☕", label: "Java" },
+    { icon: "🗄️", label: "SQL" },
+    { icon: "🤖", label: "AI/ML" },
+    { icon: "🧪", label: "Flask" },
   ];
 
   const competencies = [
@@ -64,42 +51,12 @@ function Skills() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-
-          // Initialize progress at 0
-          const initialProgress = {};
-          skillCategories.forEach((category) => {
-            category.skills.forEach((skill) => {
-              initialProgress[skill.name] = 0;
-            });
-          });
-          setProgress(initialProgress);
-
-          // Animate to actual values
-          setTimeout(() => {
-            const finalProgress = {};
-            skillCategories.forEach((category) => {
-              category.skills.forEach((skill) => {
-                finalProgress[skill.name] = skill.level;
-              });
-            });
-            setProgress(finalProgress);
-          }, 300);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 },
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -113,60 +70,67 @@ function Skills() {
           </h2>
         </div>
 
-        {/* Skills Grid - 4 Columns */}
-        <div className="skills-grid-new">
-          {skillCategories.map((category, catIndex) => (
-            <div
-              key={catIndex}
-              className={`skill-category-new ${isVisible ? "slide-up" : ""}`}
-              style={{ animationDelay: `${catIndex * 0.1}s` }}
-            >
-              {/* Category Header */}
-              <div className="category-header-new">
-                <span
-                  className="category-icon-new"
-                  style={{ color: category.color }}
-                >
-                  {category.icon}
-                </span>
-                <h3 className="category-title-new">{category.category}</h3>
+        {/* AUTO-SCROLL TECH MARQUEE */}
+        <div className={`marquee-section ${isVisible ? "fade-in" : ""}`}>
+          <h3 className="marquee-label">
+            <span className="gradient-text">Technologies</span> I Work With
+          </h3>
+          <div className="marquee-wrapper">
+            <div className="marquee-fade-left"></div>
+            <div className="marquee-track-outer">
+              <div className="marquee-track">
+                {techStack.map((item, i) => (
+                  <div key={`a-${i}`} className="marquee-item">
+                    <span className="marquee-icon">{item.icon}</span>
+                    <span className="marquee-text">{item.label}</span>
+                  </div>
+                ))}
               </div>
-
-              {/* Skills List */}
-              <div className="skills-list-new">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="skill-item-new">
-                    <div className="skill-header-new">
-                      <span className="skill-name-new">{skill.name}</span>
-                      <span
-                        className="skill-percentage-new"
-                        style={{ color: category.color }}
-                      >
-                        {progress[skill.name] || 0}%
-                      </span>
-                    </div>
-                    <div className="skill-bar-new">
-                      <div
-                        className="skill-progress-new"
-                        style={{
-                          width: `${progress[skill.name] || 0}%`,
-                          background: `linear-gradient(90deg, ${category.color}, rgba(255,255,255,0.2))`,
-                        }}
-                      >
-                        <div
-                          className="skill-glow"
-                          style={{ boxShadow: `0 0 20px ${category.color}` }}
-                        ></div>
-                      </div>
-                    </div>
+              <div className="marquee-track" aria-hidden="true">
+                {techStack.map((item, i) => (
+                  <div key={`b-${i}`} className="marquee-item">
+                    <span className="marquee-icon">{item.icon}</span>
+                    <span className="marquee-text">{item.label}</span>
                   </div>
                 ))}
               </div>
             </div>
-          ))}
+            <div className="marquee-fade-right"></div>
+          </div>
         </div>
 
-        {/* Competencies Section */}
+        {/* SOFT SKILLS */}
+        <div className={`soft-skills-section ${isVisible ? "fade-in" : ""}`}>
+          <div className="soft-skills-header">
+            <span
+              className="skills-subtitle"
+              style={{
+                color: "#ec4899",
+                borderColor: "rgba(236,72,153,0.4)",
+                background: "rgba(236,72,153,0.1)",
+              }}
+            >
+              Soft Skills
+            </span>
+            <h3 className="soft-skills-title">
+              Beyond the <span className="gradient-text">Code</span>
+            </h3>
+          </div>
+          <div className="soft-skills-grid">
+            {softSkills.map((skill, i) => (
+              <div
+                key={i}
+                className="soft-skill-pill"
+                style={{ animationDelay: `${i * 0.05}s` }}
+              >
+                <span className="soft-skill-icon">{skill.icon}</span>
+                <span className="soft-skill-label">{skill.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CORE COMPETENCIES */}
         <div className={`competencies-new ${isVisible ? "fade-in" : ""}`}>
           <h3 className="competencies-title-new">Core Competencies</h3>
           <div className="competencies-grid-new">
