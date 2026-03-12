@@ -5,10 +5,10 @@ import "./Greeting.css";
 const greetings = [
   { text: "Hello", language: "English", hinglish: "Hello" },
   { text: "नमस्ते", language: "Hindi", hinglish: "Namaste" },
+  { text: "નમસ્તે", language: "Gujarati", hinglish: "Namaste" },
   { text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ", language: "Punjabi", hinglish: "Sat Sri Akaal" },
-  { text: "வணக்கம்", language: "Tamil", hinglish: "Vanakkam" },
   { text: "నమస్కారం", language: "Telugu", hinglish: "Namaskaram" },
-  { text: "مرحبا", language: "Urdu / Arabic", hinglish: "Marhaba" },
+  { text: "নমস্কার", language: "Bengali", hinglish: "Nomoskar" }
 ];
 
 function Greeting() {
