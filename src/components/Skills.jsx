@@ -53,7 +53,7 @@ function Skills() {
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.15 },
+      { threshold: 0.15 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -62,6 +62,7 @@ function Skills() {
   return (
     <section id="skills" className="skills-new" ref={sectionRef}>
       <div className="skills-container-new">
+
         {/* Header */}
         <div className={`skills-header ${isVisible ? "fade-in" : ""}`}>
           <span className="skills-subtitle">Tech Stack</span>
@@ -70,7 +71,7 @@ function Skills() {
           </h2>
         </div>
 
-        {/* AUTO-SCROLL TECH MARQUEE */}
+        {/* ── TECH STACK MARQUEE (scrolls RIGHT → LEFT) ── */}
         <div className={`marquee-section ${isVisible ? "fade-in" : ""}`}>
           <h3 className="marquee-label">
             <span className="gradient-text">Technologies</span> I Work With
@@ -99,8 +100,8 @@ function Skills() {
           </div>
         </div>
 
-        {/* SOFT SKILLS */}
-        <div className={`soft-skills-section ${isVisible ? "fade-in" : ""}`}>
+        {/* ── SOFT SKILLS MARQUEE (scrolls LEFT → RIGHT, reverse) ── */}
+        <div className={`marquee-section ${isVisible ? "fade-in" : ""}`}>
           <div className="soft-skills-header">
             <span
               className="skills-subtitle"
@@ -116,37 +117,63 @@ function Skills() {
               Beyond the <span className="gradient-text">Code</span>
             </h3>
           </div>
-          <div className="soft-skills-grid">
-            {softSkills.map((skill, i) => (
-              <div
-                key={i}
-                className="soft-skill-pill"
-                style={{ animationDelay: `${i * 0.05}s` }}
-              >
-                <span className="soft-skill-icon">{skill.icon}</span>
-                <span className="soft-skill-label">{skill.label}</span>
+          <div className="marquee-wrapper">
+            <div className="marquee-fade-left marquee-fade-left--pink"></div>
+            <div className="marquee-track-outer marquee-track-outer--reverse">
+              <div className="marquee-track">
+                {softSkills.map((item, i) => (
+                  <div key={`sa-${i}`} className="marquee-item marquee-item--pink">
+                    <span className="marquee-icon">{item.icon}</span>
+                    <span className="marquee-text">{item.label}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+              <div className="marquee-track" aria-hidden="true">
+                {softSkills.map((item, i) => (
+                  <div key={`sb-${i}`} className="marquee-item marquee-item--pink">
+                    <span className="marquee-icon">{item.icon}</span>
+                    <span className="marquee-text">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="marquee-fade-right marquee-fade-right--pink"></div>
           </div>
         </div>
 
-        {/* CORE COMPETENCIES */}
-        <div className={`competencies-new ${isVisible ? "fade-in" : ""}`}>
-          <h3 className="competencies-title-new">Core Competencies</h3>
-          <div className="competencies-grid-new">
-            {competencies.map((comp, index) => (
-              <div
-                key={index}
-                className="competency-card-new"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="competency-icon-new">{comp.icon}</div>
-                <h4>{comp.title}</h4>
-                <p>{comp.desc}</p>
+        {/* ── CORE COMPETENCIES MARQUEE (scrolls RIGHT → LEFT) ── */}
+        <div className={`marquee-section ${isVisible ? "fade-in" : ""}`}>
+          <h3 className="marquee-label">Core <span className="gradient-text">Competencies</span></h3>
+          <div className="marquee-wrapper">
+            <div className="marquee-fade-left"></div>
+            <div className="marquee-track-outer marquee-track-outer--slow">
+              <div className="marquee-track">
+                {competencies.map((item, i) => (
+                  <div key={`ca-${i}`} className="marquee-item marquee-item--comp">
+                    <span className="marquee-icon">{item.icon}</span>
+                    <div className="comp-text-group">
+                      <span className="comp-title">{item.title}</span>
+                      <span className="comp-desc">{item.desc}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+              <div className="marquee-track" aria-hidden="true">
+                {competencies.map((item, i) => (
+                  <div key={`cb-${i}`} className="marquee-item marquee-item--comp">
+                    <span className="marquee-icon">{item.icon}</span>
+                    <div className="comp-text-group">
+                      <span className="comp-title">{item.title}</span>
+                      <span className="comp-desc">{item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="marquee-fade-right"></div>
           </div>
         </div>
+
       </div>
     </section>
   );
