@@ -38,10 +38,8 @@
   color: #fff;
 }
 
-
-
 /* ============================================
-   MARQUEE / AUTO-SCROLL TECH STRIP
+   SHARED MARQUEE STYLES
    ============================================ */
 
 .marquee-section {
@@ -56,7 +54,19 @@
   margin-bottom: 28px;
 }
 
-/* Outer clip container */
+.soft-skills-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.soft-skills-title {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 900;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* Clip container */
 .marquee-wrapper {
   position: relative;
   width: 100%;
@@ -64,7 +74,7 @@
   padding: 10px 0;
 }
 
-/* Fade edges */
+/* Fade edges — purple (default) */
 .marquee-fade-left,
 .marquee-fade-right {
   position: absolute;
@@ -75,33 +85,42 @@
   pointer-events: none;
 }
 
-.marquee-fade-left {
-  left: 0;
-  background: linear-gradient(90deg, #0a0a1a 0%, transparent 100%);
-}
+.marquee-fade-left  { left:  0; background: linear-gradient(90deg,  #0a0a1a 0%, transparent 100%); }
+.marquee-fade-right { right: 0; background: linear-gradient(270deg, #0a0a1a 0%, transparent 100%); }
 
-.marquee-fade-right {
-  right: 0;
-  background: linear-gradient(270deg, #0a0a1a 0%, transparent 100%);
-}
+/* Pink fade variants for soft skills */
+.marquee-fade-left--pink  { background: linear-gradient(90deg,  #0a0a1a 0%, transparent 100%); }
+.marquee-fade-right--pink { background: linear-gradient(270deg, #0a0a1a 0%, transparent 100%); }
 
-/* The scrolling belt — holds two identical sets side by side */
+/* ── Scrolling belt ── */
 .marquee-track-outer {
   display: flex;
   width: max-content;
   animation: marqueeScroll 28s linear infinite;
 }
 
-.marquee-track-outer:hover {
+/* Reverse direction for soft skills */
+.marquee-track-outer--reverse {
+  animation: marqueeScrollReverse 24s linear infinite;
+}
+
+/* Slower speed for competencies */
+.marquee-track-outer--slow {
+  animation: marqueeScroll 20s linear infinite;
+}
+
+.marquee-track-outer:hover,
+.marquee-track-outer--reverse:hover,
+.marquee-track-outer--slow:hover {
   animation-play-state: paused;
 }
 
-/* Each half of the belt */
+/* Each half */
 .marquee-track {
   display: flex;
   gap: 16px;
   flex-shrink: 0;
-  padding-right: 16px; /* match gap so loop is seamless */
+  padding-right: 16px;
 }
 
 @keyframes marqueeScroll {
@@ -109,6 +128,12 @@
   100% { transform: translateX(-50%); }
 }
 
+@keyframes marqueeScrollReverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ── Base pill ── */
 .marquee-item {
   display: inline-flex;
   align-items: center;
@@ -132,145 +157,57 @@
   box-shadow: 0 8px 25px rgba(167, 139, 250, 0.25);
 }
 
+/* Pink variant — soft skills */
+.marquee-item--pink {
+  border-color: rgba(236, 72, 153, 0.2);
+}
+
+.marquee-item--pink:hover {
+  background: rgba(236, 72, 153, 0.12);
+  border-color: rgba(236, 72, 153, 0.55);
+  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.25);
+}
+
+/* Competency variant — wider card with two-line text */
+.marquee-item--comp {
+  border-color: rgba(34, 211, 238, 0.2);
+  border-radius: 16px;
+  padding: 14px 24px;
+  gap: 14px;
+}
+
+.marquee-item--comp:hover {
+  background: rgba(34, 211, 238, 0.1);
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 8px 25px rgba(34, 211, 238, 0.2);
+}
+
+.comp-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.comp-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #a78bfa;
+  white-space: nowrap;
+}
+
+.comp-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+
 .marquee-icon { font-size: 1.3rem; }
 
 .marquee-text {
   font-size: 0.9rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   letter-spacing: 0.5px;
-}
-
-/* ============================================
-   SOFT SKILLS SECTION
-   ============================================ */
-
-.soft-skills-section {
-  margin-bottom: 70px;
-}
-
-.soft-skills-header {
-  text-align: center;
-  margin-bottom: 36px;
-}
-
-.soft-skills-title {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 900;
-  color: #fff;
-  margin-top: 12px;
-}
-
-.soft-skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  justify-content: center;
-}
-
-.soft-skill-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 22px;
-  background: rgba(15, 15, 35, 0.7);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(236, 72, 153, 0.2);
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  cursor: default;
-  animation: softFadeIn 0.6s ease both;
-  position: relative;
-  overflow: hidden;
-}
-
-.soft-skill-pill::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50px;
-  background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(167,139,250,0.1));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.soft-skill-pill:hover::before { opacity: 1; }
-
-.soft-skill-pill:hover {
-  border-color: rgba(236, 72, 153, 0.6);
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.25);
-}
-
-@keyframes softFadeIn {
-  from { opacity: 0; transform: translateY(20px) scale(0.9); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.soft-skill-icon {
-  font-size: 1.3rem;
-}
-
-.soft-skill-label {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.9);
-  white-space: nowrap;
-}
-
-/* ============================================
-   COMPETENCIES SECTION
-   ============================================ */
-
-.competencies-new { margin-top: 10px; }
-
-.competencies-title-new {
-  font-size: 1.8rem;
-  font-weight: 800;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 40px;
-}
-
-.competencies-grid-new {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.competency-card-new {
-  padding: 25px 20px;
-  background: rgba(15, 15, 35, 0.6);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(167, 139, 250, 0.2);
-  border-radius: 18px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.competency-card-new:hover {
-  transform: translateY(-8px);
-  border-color: #a78bfa;
-  box-shadow: 0 15px 40px rgba(167, 139, 250, 0.2);
-  background: rgba(167, 139, 250, 0.1);
-}
-
-.competency-icon-new {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
-}
-
-.competency-card-new h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #a78bfa;
-  margin-bottom: 8px;
-}
-
-.competency-card-new p {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.5;
 }
 
 /* ============================================
@@ -294,31 +231,21 @@
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 1024px) {
-  .competencies-grid-new {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
   .skills-new { padding: 80px 20px; }
   .marquee-fade-left,
   .marquee-fade-right { width: 60px; }
-  .competencies-grid-new { grid-template-columns: repeat(2, 1fr); }
-  .soft-skills-grid { gap: 10px; }
-  .soft-skill-pill { padding: 11px 16px; }
 }
 
 @media (max-width: 480px) {
   .skills-new { padding: 60px 15px; }
   .skills-title { font-size: 1.8rem; }
   .marquee-item { padding: 10px 16px; }
+  .marquee-item--comp { padding: 12px 16px; }
   .marquee-icon { font-size: 1.1rem; }
   .marquee-text { font-size: 0.82rem; }
-  .competencies-grid-new { grid-template-columns: 1fr; }
-  .soft-skill-pill { padding: 10px 14px; }
-  .soft-skill-icon { font-size: 1.1rem; }
-  .soft-skill-label { font-size: 0.82rem; }
+  .comp-title { font-size: 0.82rem; }
+  .comp-desc  { font-size: 0.7rem; }
 }
 
 /* ============================================
@@ -329,38 +256,34 @@ body.light-mode .skills-new {
   background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
-body.light-mode .marquee-fade-left {
+body.light-mode .marquee-fade-left,
+body.light-mode .marquee-fade-left--pink {
   background: linear-gradient(90deg, #f8f9fa 0%, transparent 100%);
 }
 
-body.light-mode .marquee-fade-right {
+body.light-mode .marquee-fade-right,
+body.light-mode .marquee-fade-right--pink {
   background: linear-gradient(270deg, #f8f9fa 0%, transparent 100%);
 }
 
 body.light-mode .marquee-item {
-  background: rgba(255,255,255,0.9);
-  border-color: rgba(167,139,250,0.25);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(167, 139, 250, 0.25);
 }
 
-body.light-mode .marquee-text,
-body.light-mode .soft-skill-label {
+body.light-mode .marquee-item--pink {
+  border-color: rgba(236, 72, 153, 0.25);
+}
+
+body.light-mode .marquee-item--comp {
+  border-color: rgba(34, 211, 238, 0.25);
+}
+
+body.light-mode .marquee-text { color: #1a1a2e; }
+body.light-mode .comp-title   { color: #7c3aed; }
+body.light-mode .comp-desc    { color: rgba(0, 0, 0, 0.5); }
+
+body.light-mode .marquee-label,
+body.light-mode .soft-skills-title {
   color: #1a1a2e;
 }
-
-body.light-mode .soft-skill-pill {
-  background: rgba(255,255,255,0.9);
-  border-color: rgba(236,72,153,0.25);
-}
-
-body.light-mode .competency-card-new {
-  background: rgba(255,255,255,0.8);
-}
-
-body.light-mode .competencies-title-new,
-body.light-mode .soft-skills-title,
-body.light-mode .marquee-label {
-  color: #1a1a2e;
-}
-
-body.light-mode .competency-card-new h4 { color: #7c3aed; }
-body.light-mode .competency-card-new p  { color: rgba(0,0,0,0.6); }
