@@ -110,7 +110,7 @@ function About() {
               <div className="stat-item-new">
                 <div className="stat-icon">💻</div>
                 <div className="stat-content">
-                  <span className="stat-num">2+</span>
+                  <span className="stat-num">1+</span>
                   <span className="stat-text">Years</span>
                 </div>
               </div>
