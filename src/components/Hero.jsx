@@ -32,7 +32,7 @@ function Hero() {
 
   // Replace this with your actual Google Drive CV link
   const cvLink =
-    "https://drive.google.com/file/d/12stvuqbDqjpHkpSnCgEHnJx4A9cPcwmr/view?usp=sharing";
+    "https://drive.google.com/file/d/1o6vucvIpFZrALugf9tWPxyzy81BFYZhC/view?usp=drive_link";
 
   const handleViewCV = () => {
     window.open(cvLink, "_blank");
