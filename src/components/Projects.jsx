@@ -113,6 +113,21 @@ function Projects() {
       ],
       color: "#ec4899",
     },
+    {
+      title: "PuzzleDay – Daily Puzzle Logic Game",
+      period: "Feb 2026 – Mar 2026",
+      description:
+        "Production-grade offline-capable daily Sudoku puzzle game with Google authentication, cloud sync, and beautiful animations. Same puzzle worldwide via date-based seed.",
+      tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Firebase", "TailwindCSS"],
+      icon: "🧩",
+      link: "https://github.com/Amit046/Puzzle-project-bluestock",
+      highlights: [
+        "Offline-first PWA",
+        "Google OAuth + JWT",
+        "Cloud sync via Neon DB",
+      ],
+      color: "#6366f1",
+    },
   ];
 
   // Mouse drag handlers
@@ -142,11 +157,10 @@ function Projects() {
     if (!isDragging || !scrollContainerRef.current) return;
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
+    const walk = (x - startX) * 2;
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  // Scroll by clicking navigation buttons
   const scrollTo = (direction) => {
     if (!scrollContainerRef.current) return;
     const scrollAmount = 400;
@@ -242,12 +256,7 @@ function Projects() {
                 <div className="project-highlights-new">
                   {project.highlights.map((highlight, idx) => (
                     <div key={idx} className="highlight-badge">
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                         <path
                           d="M20 6L9 17l-5-5"
                           stroke="currentColor"
