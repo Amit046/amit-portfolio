@@ -106,7 +106,7 @@
 
 /* Slower speed for competencies */
 .marquee-track-outer--slow {
-  animation: marqueeScroll 80s linear infinite;
+  animation: marqueeScroll 100s linear infinite;
 }
 
 .marquee-track-outer:hover,
