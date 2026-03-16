@@ -1,46 +1,182 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import "./Hero.css";
+
+// ─── CONFIG ──────────────────────────────────────────────────────────────────
+const TOTAL_FRAMES = 40; 
+const FRAME_PATH = (i) =>
+  `/sequence/ezgif-frame-${String(i).padStart(3, "0")}.png`;
+
+const FPS_START = 6; // slow start speed when cursor first enters
+const FPS_FULL = 20; // full speed after ramp-up
+const RAMP_DURATION = 1200; // ms to go from slow → full speed
+// ─────────────────────────────────────────────────────────────────────────────
 
 function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [text, setText] = useState("");
   const fullText = "Building Tomorrow's Solutions Today";
-  const [index, setIndex] = useState(0);
+  const [typingIndex, setTypingIndex] = useState(0);
 
+  const canvasRef = useRef(null);
+  const framesRef = useRef([]);
+  const currentFrameRef = useRef(0);
+  const rafRef = useRef(null);
+  const timeoutRef = useRef(null);
+  const animatingRef = useRef(false);
+  const enterTimeRef = useRef(null);
+  const wrapperRef = useRef(null);
+
+  const [framesLoaded, setFramesLoaded] = useState(false);
+  const [loadProgress, setLoadProgress] = useState(0);
+
+  // ── Typing ────────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (index < fullText.length) {
-      const timeout = setTimeout(() => {
-        setText((prev) => prev + fullText[index]);
-        setIndex(index + 1);
+    if (typingIndex < fullText.length) {
+      const t = setTimeout(() => {
+        setText((prev) => prev + fullText[typingIndex]);
+        setTypingIndex(typingIndex + 1);
       }, 60);
-      return () => clearTimeout(timeout);
+      return () => clearTimeout(t);
     }
-  }, [index]);
+  }, [typingIndex]);
 
+  // ── Global mouse glow ─────────────────────────────────────────────────────
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const h = (e) =>
       setMousePosition({
         x: (e.clientX / window.innerWidth) * 100,
         y: (e.clientY / window.innerHeight) * 100,
       });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", h);
+    return () => window.removeEventListener("mousemove", h);
   }, []);
 
-  const avatarImage = require("../assets/avatar.jpg");
+  // ── Preload all frames ────────────────────────────────────────────────────
+  useEffect(() => {
+    const images = [];
+    let loaded = 0;
+    const onLoad = () => {
+      loaded++;
+      setLoadProgress(Math.round((loaded / TOTAL_FRAMES) * 100));
+      if (loaded === TOTAL_FRAMES) {
+        framesRef.current = images;
+        setFramesLoaded(true);
+        drawFrame(0);
+      }
+    };
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      const img = new Image();
+      img.src = FRAME_PATH(i);
+      img.onload = onLoad;
+      img.onerror = onLoad;
+      images.push(img);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // Replace this with your actual Google Drive CV link
+  // ── Draw a frame ──────────────────────────────────────────────────────────
+  const drawFrame = useCallback((frameIndex) => {
+    const canvas = canvasRef.current;
+    const img = framesRef.current[frameIndex];
+    if (!canvas || !img || !img.complete) return;
+    const ctx = canvas.getContext("2d");
+    const { width, height } = canvas;
+    const scale = Math.max(
+      width / img.naturalWidth,
+      height / img.naturalHeight,
+    );
+    const sw = img.naturalWidth * scale;
+    const sh = img.naturalHeight * scale;
+    ctx.clearRect(0, 0, width, height);
+    ctx.drawImage(img, (width - sw) / 2, (height - sh) / 2, sw, sh);
+  }, []);
+
+  // ── Resize canvas ─────────────────────────────────────────────────────────
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const resize = () => {
+      const p = canvas.parentElement;
+      canvas.width = p.offsetWidth;
+      canvas.height = p.offsetHeight;
+      drawFrame(currentFrameRef.current);
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, [drawFrame]);
+
+  // ── Stop all animation ────────────────────────────────────────────────────
+  const stopAll = useCallback(() => {
+    animatingRef.current = false;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    rafRef.current = null;
+    timeoutRef.current = null;
+  }, []);
+
+  // ── Smooth ramp-up auto-play ──────────────────────────────────────────────
+  // Uses setTimeout with dynamic interval to simulate FPS ramping
+  const scheduleNext = useCallback(() => {
+    if (!animatingRef.current) return;
+
+    // Calculate elapsed time since hover started → ramp FPS
+    const elapsed = Date.now() - (enterTimeRef.current || Date.now());
+    const t = Math.min(elapsed / RAMP_DURATION, 1); // 0 → 1
+    const ease = t * t * (3 - 2 * t); // smoothstep
+    const fps = FPS_START + (FPS_FULL - FPS_START) * ease;
+    const interval = 1000 / fps;
+
+    timeoutRef.current = setTimeout(() => {
+      if (!animatingRef.current) return;
+      currentFrameRef.current = (currentFrameRef.current + 1) % TOTAL_FRAMES;
+      rafRef.current = requestAnimationFrame(() => {
+        drawFrame(currentFrameRef.current);
+        scheduleNext();
+      });
+    }, interval);
+  }, [drawFrame]);
+
+  // ── Smooth rewind back to frame 0 ────────────────────────────────────────
+  const rewindToZero = useCallback(() => {
+    stopAll();
+    const step = () => {
+      if (currentFrameRef.current <= 0) return;
+      currentFrameRef.current = Math.max(0, currentFrameRef.current - 2);
+      drawFrame(currentFrameRef.current);
+      if (currentFrameRef.current > 0)
+        rafRef.current = requestAnimationFrame(step);
+    };
+    rafRef.current = requestAnimationFrame(step);
+  }, [stopAll, drawFrame]);
+
+  // ── Mouse enter → slowly start animation ─────────────────────────────────
+  const handleMouseEnter = useCallback(() => {
+    if (!framesLoaded) return;
+    stopAll();
+    enterTimeRef.current = Date.now();
+    animatingRef.current = true;
+    scheduleNext();
+  }, [framesLoaded, stopAll, scheduleNext]);
+
+  // ── Mouse leave → rewind ──────────────────────────────────────────────────
+  const handleMouseLeave = useCallback(() => {
+    rewindToZero();
+  }, [rewindToZero]);
+
+  // ── Cleanup ───────────────────────────────────────────────────────────────
+  useEffect(() => {
+    return () => {
+      stopAll();
+    };
+  }, [stopAll]);
+
+  const avatarImage = require("../assets/avatar.jpg");
   const cvLink =
     "https://drive.google.com/file/d/1o6vucvIpFZrALugf9tWPxyzy81BFYZhC/view?usp=drive_link";
 
-  const handleViewCV = () => {
-    window.open(cvLink, "_blank");
-  };
-
   return (
     <section id="home" className="hero-redesign">
-      {/* Glow Effect */}
       <div
         className="hero-glow-effect"
         style={{
@@ -49,7 +185,7 @@ function Hero() {
       />
 
       <div className="hero-container-new">
-        {/* Left Side - Content */}
+        {/* ── Left ────────────────────────────────────────────────────────── */}
         <div className="hero-content-left">
           <div className="hero-label">
             <span className="status-dot"></span>
@@ -100,7 +236,10 @@ function Hero() {
                 />
               </svg>
             </a>
-            <button onClick={handleViewCV} className="hero-btn cv-btn">
+            <button
+              onClick={() => window.open(cvLink, "_blank")}
+              className="hero-btn cv-btn"
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
@@ -136,13 +275,6 @@ function Hero() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-                <polyline
-                  points="10 9 9 9 8 9"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
               </svg>
               <span>View CV</span>
             </button>
@@ -152,11 +284,39 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right Side - Image */}
+        {/* ── Right — Canvas ───────────────────────────────────────────────── */}
         <div className="hero-image-section">
-          <div className="image-wrapper">
+          <div
+            className={`image-wrapper image-wrapper-large ${framesLoaded ? "canvas-ready" : ""}`}
+            ref={wrapperRef}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <div className="image-border"></div>
-            <img src={avatarImage} alt="Amit" className="hero-avatar" />
+
+            {/* Loader */}
+            {!framesLoaded && (
+              <div className="canvas-loader">
+                <div className="loader-ring"></div>
+                <span className="loader-text">{loadProgress}%</span>
+              </div>
+            )}
+
+            {/* Animated canvas */}
+            <canvas
+              ref={canvasRef}
+              className="hero-canvas"
+              aria-label="Animated portrait of Amit"
+            />
+
+            {/* Static fallback while loading */}
+            {!framesLoaded && (
+              <img
+                src={avatarImage}
+                alt="Amit"
+                className="hero-avatar hero-avatar-fallback"
+              />
+            )}
 
             {/* Floating Tech Badges */}
             <div className="tech-badge badge-1">
@@ -232,7 +392,7 @@ function Hero() {
         </div>
       </div>
 
-      {/* Animated Particles */}
+      {/* Particles */}
       <div className="hero-particles-bg">
         {[...Array(15)].map((_, i) => (
           <div

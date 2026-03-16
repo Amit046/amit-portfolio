@@ -590,3 +590,112 @@ body.light-mode .tech-badge {
   background: rgba(255, 255, 255, 0.95);
   border-color: rgba(167, 139, 250, 0.5);
 }
+
+* ── LARGER IMAGE SIZE ────────────────────────────────────── */
+.image-wrapper-large {
+  width: 500px !important;
+  height: 500px !important;
+}
+ 
+@media (max-width: 1200px) {
+  .image-wrapper-large {
+    width: 430px !important;
+    height: 430px !important;
+  }
+}
+ 
+@media (max-width: 1024px) {
+  .image-wrapper-large {
+    width: 370px !important;
+    height: 370px !important;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .image-wrapper-large {
+    width: 290px !important;
+    height: 290px !important;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .image-wrapper-large {
+    width: 230px !important;
+    height: 230px !important;
+  }
+}
+ 
+/* ── CANVAS ───────────────────────────────────────────────── */
+.hero-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 2;
+  border: 4px solid rgba(167, 139, 250, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: floatAvatar 4s ease-in-out infinite;
+  display: block;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+ 
+/* Cursor pointer so user knows it's interactive */
+.canvas-ready {
+  cursor: pointer;
+}
+ 
+/* Glow on hover */
+.canvas-ready:hover .hero-canvas {
+  border-color: rgba(167, 139, 250, 0.85);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 55px rgba(167, 139, 250, 0.5),
+    0 0 110px rgba(34, 211, 238, 0.2);
+}
+ 
+/* ── FALLBACK IMAGE ───────────────────────────────────────── */
+.hero-avatar-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 3;
+  border: 4px solid rgba(167, 139, 250, 0.3);
+}
+ 
+/* ── LOADER ───────────────────────────────────────────────── */
+.canvas-loader {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(10, 10, 26, 0.82);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+ 
+.loader-ring {
+  width: 52px;
+  height: 52px;
+  border: 3px solid rgba(167, 139, 250, 0.2);
+  border-top-color: #a78bfa;
+  border-radius: 50%;
+  animation: spinLoader 0.8s linear infinite;
+}
+ 
+.loader-text {
+  color: #a78bfa;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+ 
+@keyframes spinLoader {
+  to { transform: rotate(360deg); }
+}
+ 

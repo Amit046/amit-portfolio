@@ -5,6 +5,9 @@ function About() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
+  // Use the same avatar as Hero, or swap for a different image
+  const avatarImage = require("../assets/avatar.jpg");
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -12,25 +15,25 @@ function About() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
+const node = sectionRef.current;
+if (node) {
+  observer.observe(node);
+}
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+return () => {
+  if (node) {
+    observer.unobserve(node);
+  }
+};
   }, []);
 
   return (
     <section id="about" className="about-new" ref={sectionRef}>
       <div className="about-container-new">
         <div className={`about-header ${isVisible ? "fade-in" : ""}`}>
-          <span className="about-subtitle">Who I Am? </span>
+          <span className="about-subtitle">Who I Am?</span>
           <h2 className="about-title">
             Turning Ideas Into <span className="gradient-text">Reality</span>
           </h2>
@@ -39,6 +42,23 @@ function About() {
         <div className="about-grid-new">
           {/* Left - Main Content */}
           <div className={`about-main ${isVisible ? "slide-left" : ""}`}>
+            {/* ── Avatar Card ──────────────────────────────────────── */}
+            <div className="about-avatar-card">
+              <div className="about-avatar-glow" />
+              <img src={avatarImage} alt="Amit" className="about-avatar-img" />
+              <div className="about-avatar-info">
+                <span className="about-avatar-name">Amit</span>
+                <span className="about-avatar-role">
+                  Full-Stack Engineer · Data Scientist
+                </span>
+                <div className="about-avatar-status">
+                  <span className="status-dot-about" />
+                  Open to opportunities
+                </div>
+              </div>
+            </div>
+            {/* ─────────────────────────────────────────────────────── */}
+
             <p className="about-lead">
               Full-Stack Engineer with a passion for building scalable,
               data-driven applications.

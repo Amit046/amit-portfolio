@@ -365,3 +365,117 @@
     padding: 20px;
   }
 }
+/* ── About Avatar Card ──────────────────────────────────── */
+.about-avatar-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  background: rgba(15, 15, 35, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 20px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.about-avatar-card:hover {
+  border-color: rgba(167, 139, 250, 0.55);
+  box-shadow: 0 16px 48px rgba(167, 139, 250, 0.18);
+}
+ 
+/* Ambient glow behind the card */
+.about-avatar-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 80% at 0% 50%,
+    rgba(167, 139, 250, 0.12),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+ 
+/* Circular portrait */
+.about-avatar-img {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(167, 139, 250, 0.45);
+  box-shadow: 0 0 24px rgba(167, 139, 250, 0.35);
+  flex-shrink: 0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+ 
+.about-avatar-card:hover .about-avatar-img {
+  transform: scale(1.05);
+  box-shadow: 0 0 36px rgba(167, 139, 250, 0.55);
+}
+ 
+/* Text block beside the avatar */
+.about-avatar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+ 
+.about-avatar-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+ 
+.about-avatar-role {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+ 
+.about-avatar-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  padding: 4px 12px;
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  border-radius: 50px;
+  color: #22d3ee;
+  font-size: 0.72rem;
+  font-weight: 700;
+  width: fit-content;
+}
+ 
+.status-dot-about {
+  width: 7px;
+  height: 7px;
+  background: #22d3ee;
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 8px #22d3ee;
+  flex-shrink: 0;
+}
+ 
+/* Responsive */
+@media (max-width: 480px) {
+  .about-avatar-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+  }
+ 
+  .about-avatar-img {
+    width: 72px;
+    height: 72px;
+  }
+ 
+  .about-avatar-name {
+    font-size: 1.1rem;
+  }
+}
