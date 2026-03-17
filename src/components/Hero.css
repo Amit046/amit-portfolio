@@ -593,35 +593,35 @@ body.light-mode .tech-badge {
 
 /* ── LARGER IMAGE SIZE ────────────────────────────────────── */
 .image-wrapper-large {
-  width: 500px !important;
-  height: 500px !important;
+  width: 600px !important;
+  height: 600px !important;
 }
 
 @media (max-width: 1200px) {
   .image-wrapper-large {
-    width: 430px !important;
-    height: 430px !important;
+    width: 520px !important;
+    height: 520px !important;
   }
 }
 
 @media (max-width: 1024px) {
   .image-wrapper-large {
-    width: 370px !important;
-    height: 370px !important;
+    width: 450px !important;
+    height: 450px !important;
   }
 }
 
 @media (max-width: 768px) {
   .image-wrapper-large {
-    width: 290px !important;
-    height: 290px !important;
+    width: 360px !important;
+    height: 360px !important;
   }
 }
 
 @media (max-width: 480px) {
   .image-wrapper-large {
-    width: 230px !important;
-    height: 230px !important;
+    width: 280px !important;
+    height: 280px !important;
   }
 }
 
