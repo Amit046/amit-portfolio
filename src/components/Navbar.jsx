@@ -28,29 +28,7 @@ function Navbar({ darkMode, setDarkMode }) {
           <span className="logo-dot">.</span>
         </div>
 
-        <div className={`nav-menu ${mobileMenuOpen ? "active" : ""}`}>
-          <a onClick={() => scrollToSection("home")} className="nav-link">
-            Home
-          </a>
-          <a onClick={() => scrollToSection("about")} className="nav-link">
-            About
-          </a>
-          <a onClick={() => scrollToSection("projects")} className="nav-link">
-            Projects
-          </a>
-          <a onClick={() => scrollToSection("skills")} className="nav-link">
-            Skills
-          </a>
-          <a
-            onClick={() => scrollToSection("certifications")}
-            className="nav-link"
-          >
-            Certifications
-          </a>
-          <a onClick={() => scrollToSection("contact")} className="nav-link">
-            Contact
-          </a>
-        </div>
+        
 
         <div className="nav-right">
           <button
