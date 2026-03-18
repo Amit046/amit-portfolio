@@ -1,5 +1,5 @@
 /* ============================================
-   FIXED GOOEY NAV - CORRECT BLOB POSITIONING
+   GOOEY NAV
    ============================================ */
 
 .gooey-nav-container {
@@ -33,7 +33,7 @@
   transition: top 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   z-index: 1;
   left: 5%;
-  pointer-events: none; /* IMPORTANT: Don't block clicks */
+  pointer-events: none;
 }
 
 .gooey-nav-item {
@@ -46,27 +46,22 @@
   font-size: 13px;
   font-weight: 600;
   border-radius: 20px;
-  cursor: pointer; /* Changed from cursor: none */
+  cursor: pointer;
   transition: color 0.3s ease;
   white-space: nowrap;
   min-width: 100px;
   text-align: center;
-  height: 38px; /* Match blob height */
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.gooey-nav-item.active {
-  color: #fff;
-}
-
-.gooey-nav-item:hover {
-  color: #fff;
-}
+.gooey-nav-item.active { color: #fff; }
+.gooey-nav-item:hover  { color: #fff; }
 
 /* ============================================
-   COMPACT TECH BADGES ON HERO IMAGE
+   TECH BADGES
    ============================================ */
 
 .tech-badge {
@@ -88,42 +83,18 @@
   white-space: nowrap;
 }
 
-.tech-badge svg {
-  color: #a78bfa;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.badge-1 {
-  top: 12%;
-  right: -12%;
-  animation-delay: 0s;
-}
-
-.badge-2 {
-  top: 50%;
-  right: -15%;
-  animation-delay: 1s;
-}
-
-.badge-3 {
-  bottom: 12%;
-  left: -12%;
-  animation-delay: 2s;
-}
+.tech-badge svg { color: #a78bfa; width: 16px; height: 16px; flex-shrink: 0; }
+.badge-1 { top: 12%;    right: -12%; animation-delay: 0s; }
+.badge-2 { top: 50%;    right: -15%; animation-delay: 1s; }
+.badge-3 { bottom: 12%; left: -12%;  animation-delay: 2s; }
 
 @keyframes floatBadge {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
 }
 
 /* ============================================
-   COMPACT DOCK AT BOTTOM
+   DOCK
    ============================================ */
 
 .dock-container {
@@ -153,7 +124,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(34, 211, 238, 0.2));
+  background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(34,211,238,0.2));
   border-radius: 14px;
   color: #a78bfa;
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
@@ -162,16 +133,13 @@
 }
 
 .dock-item:hover {
-  background: linear-gradient(135deg, rgba(167, 139, 250, 0.4), rgba(34, 211, 238, 0.4));
+  background: linear-gradient(135deg, rgba(167,139,250,0.4), rgba(34,211,238,0.4));
   color: #22d3ee;
   box-shadow: 0 8px 32px rgba(167, 139, 250, 0.5);
   transform: translateY(-5px);
 }
 
-.dock-item svg {
-  width: 22px;
-  height: 22px;
-}
+.dock-item svg { width: 22px; height: 22px; }
 
 .dock-tooltip {
   position: absolute;
@@ -197,177 +165,13 @@
 }
 
 /* ============================================
-   RESPONSIVE - HIDE ON MOBILE
-   ============================================ */
-
-@media (max-width: 1024px) {
-  .gooey-nav-container {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .dock-container {
-    bottom: 15px;
-  }
-
-  .dock {
-    gap: 8px;
-    padding: 8px 14px;
-  }
-
-  .dock-item {
-    width: 40px;
-    height: 40px;
-  }
-
-  .dock-item svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .tech-badge {
-    display: none !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .dock-container {
-    bottom: 12px;
-  }
-
-  .dock {
-    gap: 6px;
-    padding: 7px 12px;
-  }
-
-  .dock-item {
-    width: 36px;
-    height: 36px;
-    border-radius: 12px;
-  }
-
-  .dock-item svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .dock-tooltip {
-    font-size: 11px;
-    padding: 5px 10px;
-  }
-}
-
-/* ============================================
-   LIGHT MODE ADJUSTMENTS
-   ============================================ */
-
-body.light-mode .gooey-nav {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(167, 139, 250, 0.3);
-}
-
-body.light-mode .gooey-nav-item {
-  color: rgba(0, 0, 0, 0.6);
-}
-
-body.light-mode .gooey-nav-item.active,
-body.light-mode .gooey-nav-item:hover {
-  color: #fff;
-}
-
-body.light-mode .dock {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(167, 139, 250, 0.3);
-}
-
-body.light-mode .dock-item {
-  background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(34, 211, 238, 0.15));
-}
-
-body.light-mode .dock-item:hover {
-  background: linear-gradient(135deg, rgba(167, 139, 250, 0.3), rgba(34, 211, 238, 0.3));
-}
-
-body.light-mode .tech-badge {
-  background: rgba(255, 255, 255, 0.95);
-  color: #1a1a2e;
-}
-
-/* ============================================
-   CUSTOM CURSOR
-   ============================================ */
-
-.custom-cursor-dot,
-.custom-cursor-ring {
-  position: fixed;
-  pointer-events: none;
-  z-index: 10000;
-  top: 0;
-  left: 0;
-  will-change: transform;
-}
-
-.custom-cursor-dot {
-  width: 10px;
-  height: 10px;
-  background: linear-gradient(135deg, #a78bfa, #22d3ee);
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(167, 139, 250, 0.8);
-  transform: translate(-50%, -50%);
-}
-
-.custom-cursor-ring {
-  width: 40px;
-  height: 40px;
-  border: 2px solid rgba(167, 139, 250, 0.6);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
-}
-
-.custom-cursor-dot.hover {
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #22d3ee, #ec4899);
-  box-shadow: 0 0 30px rgba(34, 211, 238, 1);
-}
-
-.custom-cursor-ring.hover {
-  width: 60px;
-  height: 60px;
-  border-color: rgba(34, 211, 238, 1);
-  border-width: 3px;
-}
-
-/* Hide default cursor */
-@media (min-width: 768px) {
-  * {
-    cursor: none !important;
-  }
-  
-  a, button, input, textarea {
-    cursor: none !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .custom-cursor-dot,
-  .custom-cursor-ring {
-    display: none !important;
-  }
-}
-
-/* ============================================
    CLICK SPARK
    ============================================ */
 
 .click-spark-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
   z-index: 9999;
 }
@@ -379,8 +183,7 @@ body.light-mode .tech-badge {
 
 .spark-particle {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   background: linear-gradient(135deg, #a78bfa, #22d3ee);
   border-radius: 50%;
   animation: sparkShoot 0.8s ease-out forwards;
@@ -389,12 +192,57 @@ body.light-mode .tech-badge {
 }
 
 @keyframes sparkShoot {
-  0% {
-    transform: rotate(var(--angle)) translateX(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(var(--angle)) translateX(60px) scale(0);
-    opacity: 0;
-  }
+  0%   { transform: rotate(var(--angle)) translateX(0)    scale(1); opacity: 1; }
+  100% { transform: rotate(var(--angle)) translateX(60px) scale(0); opacity: 0; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .gooey-nav-container { display: none; }
+}
+
+@media (max-width: 768px) {
+  .dock-container { bottom: 15px; }
+  .dock { gap: 8px; padding: 8px 14px; }
+  .dock-item { width: 40px; height: 40px; }
+  .dock-item svg { width: 20px; height: 20px; }
+  .tech-badge { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .dock-container { bottom: 12px; }
+  .dock { gap: 6px; padding: 7px 12px; }
+  .dock-item { width: 36px; height: 36px; border-radius: 12px; }
+  .dock-item svg { width: 18px; height: 18px; }
+  .dock-tooltip { font-size: 11px; padding: 5px 10px; }
+}
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+body.light-mode .gooey-nav {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(167, 139, 250, 0.3);
+}
+body.light-mode .gooey-nav-item { color: rgba(0,0,0,0.6); }
+body.light-mode .gooey-nav-item.active,
+body.light-mode .gooey-nav-item:hover { color: #fff; }
+
+body.light-mode .dock {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(167, 139, 250, 0.3);
+}
+body.light-mode .dock-item {
+  background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(34,211,238,0.15));
+}
+body.light-mode .dock-item:hover {
+  background: linear-gradient(135deg, rgba(167,139,250,0.3), rgba(34,211,238,0.3));
+}
+body.light-mode .tech-badge {
+  background: rgba(255,255,255,0.95);
+  color: #1a1a2e;
 }

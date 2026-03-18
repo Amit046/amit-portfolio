@@ -1,74 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./Animations.css";
+import SplashCursor from "./SplashCursor";
 
-// FIXED Custom Cursor
-export function CustomCursor() {
-  const cursorRef = useRef(null);
-  const cursorDotRef = useRef(null);
-
-  useEffect(() => {
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-    let cursorDotX = 0;
-    let cursorDotY = 0;
-
-    const moveCursor = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    };
-
-    const animate = () => {
-      cursorX += (mouseX - cursorX) * 0.15;
-      cursorY += (mouseY - cursorY) * 0.15;
-      cursorDotX += (mouseX - cursorDotX) * 0.8;
-      cursorDotY += (mouseY - cursorDotY) * 0.8;
-
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-      }
-      if (cursorDotRef.current) {
-        cursorDotRef.current.style.transform = `translate3d(${cursorDotX}px, ${cursorDotY}px, 0)`;
-      }
-
-      requestAnimationFrame(animate);
-    };
-
-    window.addEventListener("mousemove", moveCursor);
-    animate();
-
-    const handleMouseOver = (e) => {
-      const target = e.target.closest(
-        "a, button, .project-card, .skill-category, .certification-card"
-      );
-      if (target) {
-        if (cursorRef.current) cursorRef.current.classList.add("hover");
-        if (cursorDotRef.current) cursorDotRef.current.classList.add("hover");
-      } else {
-        if (cursorRef.current) cursorRef.current.classList.remove("hover");
-        if (cursorDotRef.current)
-          cursorDotRef.current.classList.remove("hover");
-      }
-    };
-
-    document.addEventListener("mouseover", handleMouseOver);
-
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      document.removeEventListener("mouseover", handleMouseOver);
-    };
-  }, []);
-
-  return (
-    <>
-      <div ref={cursorDotRef} className="custom-cursor-dot"></div>
-      <div ref={cursorRef} className="custom-cursor-ring"></div>
-    </>
-  );
-}
-
-// Click Spark
+// ── Click Spark ──────────────────────────────────────────────────
 export function ClickSpark() {
   const [sparks, setSparks] = useState([]);
 
@@ -79,14 +13,12 @@ export function ClickSpark() {
         x: e.clientX,
         y: e.clientY,
       };
-
       setSparks((prev) => [...prev, spark]);
-
-      setTimeout(() => {
-        setSparks((prev) => prev.filter((s) => s.id !== spark.id));
-      }, 1000);
+      setTimeout(
+        () => setSparks((prev) => prev.filter((s) => s.id !== spark.id)),
+        1000,
+      );
     };
-
     window.addEventListener("click", handleClick);
     return () => window.removeEventListener("click", handleClick);
   }, []);
@@ -97,18 +29,13 @@ export function ClickSpark() {
         <div
           key={spark.id}
           className="spark-burst"
-          style={{
-            left: `${spark.x}px`,
-            top: `${spark.y}px`,
-          }}
+          style={{ left: `${spark.x}px`, top: `${spark.y}px` }}
         >
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
               className="spark-particle"
-              style={{
-                "--angle": `${i * 45}deg`,
-              }}
+              style={{ "--angle": `${i * 45}deg` }}
             />
           ))}
         </div>
@@ -117,7 +44,7 @@ export function ClickSpark() {
   );
 }
 
-// Dock
+// ── Dock ─────────────────────────────────────────────────────────
 export function Dock() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -168,8 +95,8 @@ export function Dock() {
                 hoveredIndex === index
                   ? 1.5
                   : hoveredIndex === index - 1 || hoveredIndex === index + 1
-                  ? 1.2
-                  : 1
+                    ? 1.2
+                    : 1
               }) translateY(${hoveredIndex === index ? "-10px" : "0"})`,
             }}
           >
@@ -182,7 +109,7 @@ export function Dock() {
   );
 }
 
-// FIXED Gooey Nav - Correct blob positioning
+// ── Gooey Nav ────────────────────────────────────────────────────
 export function GooeyNav() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -203,26 +130,17 @@ export function GooeyNav() {
     }
   };
 
-  // Calculate blob position based on active index
-  // Each button is approximately 44px height + 6px gap = 50px total
-  const blobPosition = 12 + activeIndex * 44; // Starting padding + (index * button height)
+  const blobPosition = 12 + activeIndex * 44;
 
   return (
     <>
       <div className="gooey-nav-container">
         <nav className="gooey-nav">
-          <div
-            className="gooey-blob"
-            style={{
-              top: `${blobPosition}px`,
-            }}
-          />
+          <div className="gooey-blob" style={{ top: `${blobPosition}px` }} />
           {navItems.map((item, index) => (
             <button
               key={index}
-              className={`gooey-nav-item ${
-                activeIndex === index ? "active" : ""
-              }`}
+              className={`gooey-nav-item ${activeIndex === index ? "active" : ""}`}
               onClick={() => scrollToSection(item.id, index)}
             >
               {item.label}
@@ -253,10 +171,26 @@ export function GooeyNav() {
   );
 }
 
+// ── Root export ──────────────────────────────────────────────────
 export default function Animations() {
   return (
     <>
-      <CustomCursor />
+      {/*
+        SplashCursor sits at z-index 0 (behind all page content).
+        It acts as BOTH the background fluid effect AND the cursor trail.
+        No extra library needed — pure WebGL.
+      */}
+      <SplashCursor
+        SPLAT_RADIUS={0.2}
+        SPLAT_FORCE={6000}
+        DENSITY_DISSIPATION={3.5}
+        VELOCITY_DISSIPATION={2}
+        CURL={3}
+        COLOR_UPDATE_SPEED={10}
+        SHADING={true}
+        TRANSPARENT={true}
+      />
+
       <ClickSpark />
       <Dock />
       <GooeyNav />
