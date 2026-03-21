@@ -6,22 +6,24 @@ function Certifications() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const node = sectionRef.current; // ✅ copy ref to local variable
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (node) {
+        observer.unobserve(node); // ✅ use local variable, not sectionRef.current
       }
     };
   }, []);
@@ -100,7 +102,6 @@ function Certifications() {
   ];
 
   const handleCertificateClick = (link) => {
-    // Open in new window/tab
     const newWindow = window.open(link, "_blank", "noopener,noreferrer");
     if (newWindow) newWindow.opener = null;
   };

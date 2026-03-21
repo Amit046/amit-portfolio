@@ -6,6 +6,8 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Certifications from "./components/Certifications";
+import Achievements from "./components/Achievements";
+import OpenSource from "./components/OpenSource";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Animations from "./components/Animations";
@@ -47,13 +49,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* Intro video overlay */}
       {!introComplete && <Intro onComplete={handleIntroComplete} />}
-
-      {/* All animations in one component */}
       <Animations />
 
-      {/* Background Animation */}
       <div className="background-animation">
         <div className="floating-shapes">
           <div className="shape shape-1"></div>
@@ -77,6 +75,8 @@ function App() {
       <Projects />
       <Skills />
       <Certifications />
+      <Achievements />
+      <OpenSource />
       <Contact />
       <Footer />
     </div>

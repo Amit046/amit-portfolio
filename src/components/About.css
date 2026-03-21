@@ -479,3 +479,96 @@
     font-size: 1.1rem;
   }
 }
+
+/* ============================================
+   ABOUT.CSS — LIGHT MODE FIXES
+   Paste at the very bottom of About.css
+   ============================================ */
+
+body.light-mode .about-new {
+  background: linear-gradient(180deg, #f0f2f8 0%, #ffffff 100%) !important;
+}
+
+/* Avatar card */
+body.light-mode .about-avatar-card {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(167, 139, 250, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+}
+body.light-mode .about-avatar-name {
+  color: #1a1a2e !important;
+}
+body.light-mode .about-avatar-role {
+  color: rgba(26, 26, 46, 0.55) !important;
+}
+
+/* Lead & description text */
+body.light-mode .about-lead {
+  color: #5b21b6 !important;
+}
+body.light-mode .about-desc {
+  color: rgba(26, 26, 46, 0.7) !important;
+}
+
+/* Highlight items */
+body.light-mode .highlight-item {
+  background: rgba(167, 139, 250, 0.07) !important;
+  border-left-color: #a78bfa !important;
+}
+body.light-mode .highlight-item:hover {
+  background: rgba(167, 139, 250, 0.13) !important;
+}
+body.light-mode .highlight-content h4 {
+  color: #0e7490 !important;
+}
+body.light-mode .highlight-content p {
+  color: rgba(26, 26, 46, 0.6) !important;
+}
+
+/* Stat cards */
+body.light-mode .stat-item-new {
+  background: linear-gradient(135deg, rgba(167,139,250,0.1), rgba(34,211,238,0.1)) !important;
+  border-color: rgba(167, 139, 250, 0.25) !important;
+}
+body.light-mode .stat-text {
+  color: rgba(26, 26, 46, 0.6) !important;
+}
+
+/* Education box */
+body.light-mode .education-box-new {
+  background: #ffffff !important;
+  border-color: rgba(167, 139, 250, 0.25) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+body.light-mode .edu-content h4 {
+  color: #1a1a2e !important;
+}
+body.light-mode .edu-content p {
+  color: rgba(26, 26, 46, 0.65) !important;
+}
+body.light-mode .edu-gpa {
+  background: rgba(167, 139, 250, 0.1) !important;
+}
+body.light-mode .edu-gpa span {
+  color: rgba(26, 26, 46, 0.6) !important;
+}
+
+/* Objective box */
+body.light-mode .objective-box-new {
+  background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(34,211,238,0.08)) !important;
+  border-color: rgba(167, 139, 250, 0.25) !important;
+}
+body.light-mode .obj-content p {
+  color: rgba(26, 26, 46, 0.65) !important;
+}
+
+/* About section title */
+body.light-mode .about-title {
+  color: #1a1a2e !important;
+  -webkit-text-fill-color: #1a1a2e !important;
+}
+/* Keep "Reality" gradient intact */
+body.light-mode .about-title .gradient-text {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
