@@ -39,7 +39,7 @@ function Projects() {
         "Enterprise-grade real-time video communication platform with peer-to-peer connectivity, low-latency streaming, and seamless chat integration.",
       tech: ["React.js", "WebRTC", "Socket.IO", "Node.js", "Express.js"],
       icon: "📹",
-      link: "https://github.com/Amit046/Video_Call_App",
+      link: "https://ideo-call-app-3.onrender.com",
       highlights: [
         "Sub-100ms P2P latency",
         "Real-time chat sync",
@@ -60,7 +60,7 @@ function Projects() {
         "Data Visualization",
       ],
       icon: "🌦️",
-      link: "https://github.com/Amit046/real-time-weather-predictive-analytics",
+      link: "https://skycast-vr38.onrender.com",
       highlights: [
         "Live API integration",
         "ML predictions",
@@ -75,7 +75,7 @@ function Projects() {
         "Production-grade offline-capable daily Sudoku puzzle game with Google authentication, cloud sync, and beautiful animations. Same puzzle worldwide via date-based seed.",
       tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Firebase", "TailwindCSS"],
       icon: "🧩",
-      link: "https://github.com/Amit046/Puzzle-project-bluestock",
+      link: "https://puzzle-bluestock.onrender.com",
       highlights: [
         "Offline-first PWA",
         "Google OAuth + JWT",
