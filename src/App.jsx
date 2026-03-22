@@ -7,7 +7,6 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Certifications from "./components/Certifications";
 import Achievements from "./components/Achievements";
-import OpenSource from "./components/OpenSource";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Animations from "./components/Animations";
@@ -76,7 +75,6 @@ function App() {
       <Skills />
       <Certifications />
       <Achievements />
-      <OpenSource />
       <Contact />
       <Footer />
     </div>
