@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import "./Hero.css";
 
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
-const TOTAL_FRAMES = 40; 
+const TOTAL_FRAMES = 81; 
 const FRAME_PATH = (i) =>
   `/sequence/ezgif-frame-${String(i).padStart(3, "0")}.png`;
 
