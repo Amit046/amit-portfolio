@@ -116,7 +116,7 @@ function Certifications() {
         <div className={`certifications-header ${isVisible ? "fade-in" : ""}`}>
           <span className="certifications-subtitle">Credentials</span>
           <h2 className="certifications-title">
-            <span className="gradient-text">Certifications</span>
+            <span className="gradient-text">Certifications /Certificates</span>
           </h2>
         </div>
 
