@@ -28,7 +28,7 @@ function Experience() {
       role: "Software Development Engineer (SDE) Intern",
       company: "Bluestock Fintech",
       type: "Internship",
-      period: "Feb 2026 – Present",
+      period: "Feb 2026 – Mar 2026",
       status: "current",
       icon: "💼",
       color: "#a78bfa",
