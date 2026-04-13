@@ -6,7 +6,7 @@ function Certifications() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const node = sectionRef.current; // ✅ copy ref to local variable
+    const node = sectionRef.current;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -23,7 +23,7 @@ function Certifications() {
 
     return () => {
       if (node) {
-        observer.unobserve(node); // ✅ use local variable, not sectionRef.current
+        observer.unobserve(node);
       }
     };
   }, []);
@@ -51,6 +51,27 @@ function Certifications() {
         "Comprehensive knowledge of LLMs and enterprise AI deployment",
       certificateLink:
         "https://drive.google.com/file/d/1tzHMnxD9HwbwQXw_YF5iU95DNiz8JWqT/view",
+    },
+    // ✅ NEW CERTIFICATES ADDED BELOW
+    {
+      title: "Oracle Data Platform 2025 Certified Foundations Associate",
+      issuer: "Oracle",
+      date: "Apr 2026",
+      icon: "🗄️",
+      color: "#f97316",
+      description:
+        "Foundational knowledge of Oracle Data Platform services and architecture",
+      certificateLink: "https://drive.google.com/file/d/1FQuOU4UpTtKCxlM8TPWPCaKc754p7ZC2/view?usp=sharing", //
+    },
+    {
+      title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+      issuer: "Oracle",
+      date: "Apr 2026",
+      icon: "🧠",
+      color: "#34d399",
+      description:
+        "Core understanding of AI and ML concepts on Oracle Cloud Infrastructure",
+      certificateLink: "https://drive.google.com/file/d/1FQuOU4UpTtKCxlM8TPWPCaKc754p7ZC2/view?usp=sharing", // 
     },
     {
       title: "Full Stack Development in React and Node.js",
@@ -116,7 +137,7 @@ function Certifications() {
         <div className={`certifications-header ${isVisible ? "fade-in" : ""}`}>
           <span className="certifications-subtitle">Credentials</span>
           <h2 className="certifications-title">
-            <span className="gradient-text">Certifications /Certificates</span>
+            <span className="gradient-text">Certifications / Certificates</span>
           </h2>
         </div>
 
@@ -124,9 +145,7 @@ function Certifications() {
           {certifications.map((cert, index) => (
             <div
               key={index}
-              className={`certification-card-new ${
-                isVisible ? "slide-up" : ""
-              }`}
+              className={`certification-card-new ${isVisible ? "slide-up" : ""}`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div
