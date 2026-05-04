@@ -15,7 +15,7 @@ const achievements = [
   {
     id: 2,
     icon: "💻",
-    title: "50+ LeetCode Problems Solved",
+    title: "100+ LeetCode Problems Solved",
     subtitle: "Competitive Programming",
     description:
       "Solved 50+ coding challenges on LeetCode spanning arrays, dynamic programming, trees, graphs, and more.",
