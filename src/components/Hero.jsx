@@ -6,9 +6,9 @@ const TOTAL_FRAMES = 81;
 const FRAME_PATH = (i) =>
   `/sequence/ezgif-frame-${String(i).padStart(3, "0")}.png`;
 
-const FPS_START = 6; // slow start speed when cursor first enters
-const FPS_FULL = 20; // full speed after ramp-up
-const RAMP_DURATION = 1200; // ms to go from slow → full speed
+const FPS_START = 6; 
+const FPS_FULL = 20; 
+const RAMP_DURATION = 1200; 
 // ─────────────────────────────────────────────────────────────────────────────
 
 function Hero() {
@@ -173,7 +173,7 @@ function Hero() {
 
   const avatarImage = require("../assets/avatar.jpg");
   const cvLink =
-    "https://drive.google.com/file/d/1o6vucvIpFZrALugf9tWPxyzy81BFYZhC/view?usp=drive_link";
+    "https://drive.google.com/file/d/1aRMSUXDJr6D3ftg7iyuyuedd_2JNhKFl/view?usp=drive_link";
 
   return (
     <section id="home" className="hero-redesign">

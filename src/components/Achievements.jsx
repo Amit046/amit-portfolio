@@ -18,7 +18,7 @@ const achievements = [
     title: "100+ LeetCode Problems Solved",
     subtitle: "Competitive Programming",
     description:
-      "Solved 50+ coding challenges on LeetCode spanning arrays, dynamic programming, trees, graphs, and more.",
+      "Solved 100+ coding challenges on LeetCode spanning arrays, dynamic programming, trees, graphs, and more.",
     tag: "DSA",
     color: "var(--ach-cyan)",
   },
