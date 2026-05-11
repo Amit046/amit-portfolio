@@ -46,12 +46,10 @@ export default function Achievements() {
 
   return (
     <section className="achievements-section" id="achievements" ref={sectionRef}>
-      {/* Decorative blobs */}
       <div className="ach-blob ach-blob-1" />
       <div className="ach-blob ach-blob-2" />
 
       <div className={`ach-container ${visible ? "ach-visible" : ""}`}>
-        {/* Header */}
         <div className="ach-header">
           <span className="ach-label">Milestones</span>
           <h2 className="ach-title">
@@ -62,7 +60,6 @@ export default function Achievements() {
           </p>
         </div>
 
-        {/* Cards */}
         <div className="ach-grid">
           {achievements.map((ach, i) => (
             <div
@@ -71,7 +68,6 @@ export default function Achievements() {
               style={{ "--delay": `${i * 0.18}s`, "--accent": ach.color }}
             >
               <div className="ach-card-inner">
-                {/* Glow accent line */}
                 <div className="ach-accent-bar" />
 
                 <div className="ach-icon-wrap">
@@ -83,7 +79,6 @@ export default function Achievements() {
                 <p className="ach-card-sub">{ach.subtitle}</p>
                 <p className="ach-card-desc">{ach.description}</p>
 
-                {/* LeetCode Profile Button */}
                 {ach.link && (
                   
                     href={ach.link}
@@ -99,6 +94,8 @@ export default function Achievements() {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                       <polyline points="15 3 21 3 21 9" />
@@ -107,7 +104,6 @@ export default function Achievements() {
                   </a>
                 )}
 
-                {/* Corner decoration */}
                 <svg className="ach-corner" viewBox="0 0 40 40" fill="none">
                   <path d="M0 40 L40 0" stroke="currentColor" strokeWidth="1" opacity="0.15" />
                   <path d="M10 40 L40 10" stroke="currentColor" strokeWidth="1" opacity="0.1" />
