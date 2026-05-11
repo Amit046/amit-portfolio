@@ -11,6 +11,7 @@ const achievements = [
       "Qualified GATE 2026 in Computer Science & Information Technology — one of India's most competitive national-level engineering exams.",
     tag: "Academic",
     color: "var(--ach-gold)",
+    link: null,
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const achievements = [
       "Solved 100+ coding challenges on LeetCode spanning arrays, dynamic programming, trees, graphs, and more.",
     tag: "DSA",
     color: "var(--ach-cyan)",
+    link: "https://leetcode.com/u/Amit046/",
   },
 ];
 
@@ -77,10 +79,33 @@ export default function Achievements() {
                 </div>
 
                 <div className="ach-tag">{ach.tag}</div>
-
                 <h3 className="ach-card-title">{ach.title}</h3>
                 <p className="ach-card-sub">{ach.subtitle}</p>
                 <p className="ach-card-desc">{ach.description}</p>
+
+                {/* LeetCode Profile Button */}
+                {ach.link && (
+                  
+                    href={ach.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ach-link-btn"
+                  >
+                    <span>View Profile</span>
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                )}
 
                 {/* Corner decoration */}
                 <svg className="ach-corner" viewBox="0 0 40 40" fill="none">
