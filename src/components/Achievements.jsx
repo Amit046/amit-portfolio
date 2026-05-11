@@ -38,17 +38,20 @@ export default function Achievements() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="achievements-section" id="achievements" ref={sectionRef}>
+    <section
+      className="achievements-section"
+      id="achievements"
+      ref={sectionRef}
+    >
       <div className="ach-blob ach-blob-1" />
       <div className="ach-blob ach-blob-2" />
-
       <div className={`ach-container ${visible ? "ach-visible" : ""}`}>
         <div className="ach-header">
           <span className="ach-label">Milestones</span>
@@ -59,7 +62,6 @@ export default function Achievements() {
             A few highlights from my academic and coding journey.
           </p>
         </div>
-
         <div className="ach-grid">
           {achievements.map((ach, i) => (
             <div
@@ -69,18 +71,15 @@ export default function Achievements() {
             >
               <div className="ach-card-inner">
                 <div className="ach-accent-bar" />
-
                 <div className="ach-icon-wrap">
                   <span className="ach-icon">{ach.icon}</span>
                 </div>
-
                 <div className="ach-tag">{ach.tag}</div>
                 <h3 className="ach-card-title">{ach.title}</h3>
                 <p className="ach-card-sub">{ach.subtitle}</p>
                 <p className="ach-card-desc">{ach.description}</p>
-
                 {ach.link && (
-                  
+                  <a
                     href={ach.link}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -103,10 +102,19 @@ export default function Achievements() {
                     </svg>
                   </a>
                 )}
-
                 <svg className="ach-corner" viewBox="0 0 40 40" fill="none">
-                  <path d="M0 40 L40 0" stroke="currentColor" strokeWidth="1" opacity="0.15" />
-                  <path d="M10 40 L40 10" stroke="currentColor" strokeWidth="1" opacity="0.1" />
+                  <path
+                    d="M0 40 L40 0"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    opacity="0.15"
+                  />
+                  <path
+                    d="M10 40 L40 10"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    opacity="0.1"
+                  />
                 </svg>
               </div>
             </div>

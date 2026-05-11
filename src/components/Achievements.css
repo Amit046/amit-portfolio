@@ -219,3 +219,28 @@
     padding: 28px 22px 24px;
   }
 }
+
+.ach-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.18s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+.ach-link-btn:hover {
+  background: var(--accent);
+  color: #0a0a0f;
+  transform: translateY(-2px);
+}
