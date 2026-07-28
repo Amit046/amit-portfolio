@@ -33,6 +33,21 @@ function Projects() {
 
   const projects = [
     {
+      title: "AI Investment Research Agent",
+      period: "June 2026",
+      description:
+        "AI-powered investment research tool that analyzes any company and generates a structured INVEST/PASS recommendation, using a two-node LangGraph.js workflow that runs parallel real-time web research and synthesizes it with Gemini 2.5 Flash.",
+      tech: ["Next.js", "TypeScript", "LangGraph.js", "Gemini 2.5 Flash", "Tavily API", "Tailwind CSS"],
+      icon: "🤖",
+      link: "https://github.com/Amit046/ai-investment-agent",
+      highlights: [
+        "4 parallel research searches",
+        "LLM-generated invest score",
+        "Structured JSON report output",
+      ],
+      color: "#3b82f6",
+    },
+    {
       title: "Video Calling Website",
       period: "May 2025 – Aug 2025",
       description:
