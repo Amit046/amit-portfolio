@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Animations from "./components/Animations";
 import Intro from "./components/Intro";
+import ChatBot from "./components/ChatBot";
 
 import "./styles.css";
 
@@ -77,6 +78,7 @@ function App() {
       <Achievements />
       <Contact />
       <Footer />
+      <ChatBot />
     </div>
   );
 }
