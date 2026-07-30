@@ -89,7 +89,7 @@ amit-portfolio/
 │   │   ├── Contact.css
 │   │   ├── Footer.jsx
 │   │   ├── Greeting.jsx          
-│   │   ├── Greeting.css         
+│   │   ├── Greeting.css      
 │   │   ├── ChatBot.jsx          
 │   │   └── ChatBot.css
 │   ├── styles.css
@@ -110,6 +110,7 @@ amit-portfolio/
 | **Styling** | Pure CSS, Glassmorphism, Gradients |
 | **Animations** | CSS Keyframes, Framer Motion |
 | **Icons** | React Icons |
+| **AI Chatbot** | Groq API (Llama 3.3 70B), OpenAI-compatible chat completions |
 | **Hosting** | Render |
 | **Version Control** | Git + GitHub |
 
