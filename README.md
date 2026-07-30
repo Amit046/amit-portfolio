@@ -12,8 +12,11 @@ A professional, fully redesigned, **neon + glassmorphism React.js portfolio**, f
 ## 👨‍💻 Author  
 **Amit**  
 Full Stack Developer | Data Science Enthusiast | AI Explorer  
+- 📧 Email: amityt500678@gmail.com
+- 📱 Phone: +91-9815886722
 - 🔗 GitHub: https://github.com/Amit046  
 - 🔗 LinkedIn: https://www.linkedin.com/in/-amit  
+- 📸 Instagram: @_amit_in
 
 ---
 
@@ -46,6 +49,17 @@ Full Stack Developer | Data Science Enthusiast | AI Explorer
 ### 💾 Data Persistence  
 - Theme saved using **localStorage**  
 
+### 🤖 AI Portfolio Chatbot  
+- Floating chat widget embedded on the site that answers visitor questions
+  about Amit's skills, projects, experience, and certifications.
+- Powered by the Groq API (Llama 3.3 70B) using an OpenAI-compatible chat
+  completions endpoint.
+- Grounded via a system-prompt context containing real resume/project data,
+  so it answers only from verified facts and avoids making things up.
+- Built with React state (no external chat library) — includes typing
+  indicator, auto-scroll, and error handling for failed API calls.
+- Component: `src/components/ChatBot.jsx` + `ChatBot.css`.
+
 ---
 
 # 🧩 Folder Structure (Updated)
@@ -74,8 +88,10 @@ amit-portfolio/
 │   │   ├── Contact.jsx
 │   │   ├── Contact.css
 │   │   ├── Footer.jsx
-│   │   ├── Greeting.jsx          ← ADD THIS FILE
-│   │   └── Greeting.css          ← ADD THIS FILE
+│   │   ├── Greeting.jsx          
+│   │   ├── Greeting.css         
+│   │   ├── ChatBot.jsx          
+│   │   └── ChatBot.css
 │   ├── styles.css
 │   ├── App.jsx
 │   └── index.js
@@ -212,9 +228,11 @@ Add to package.json:
 
 # 💬 Contact
 
-📧 Email: (add your email here)  
+📧 Email: amityt500678@gmail.com
+📱 Phone: +91-9815886722
 🌐 LinkedIn: https://www.linkedin.com/in/-amit  
 🧑‍💻 GitHub: https://github.com/Amit046  
+📸 Instagram: @_amit_in
 
 ---
 
@@ -222,5 +240,4 @@ Add to package.json:
 If you found this useful —  
 **Please star the repository!** ⭐  
 
-> _“Build beautifully. Design boldly. Code smartly.”_
-
+> _"Build beautifully. Design boldly. Code smartly."_
